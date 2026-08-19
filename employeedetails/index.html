@@ -979,7 +979,7 @@ document.addEventListener('focusin', (e) => {
             <h3 style="margin: 0; color: #E2B2FF; font-family: inherit; font-size: 20px; font-weight: 600; letter-spacing: 0.5px;">Confirm Your Details</h3>
             <p style="margin: 6px 0 0 0; color: rgba(214, 209, 206, 0.7); font-size: 13px;">Please review the details below before submitting.</p>
           </div>
-          <div id="confirm-popup-content" style="padding: 20px; overflow-y: auto; -webkit-overflow-scrolling: touch; flex: 1; min-height: 0; font-family: inherit; font-size: 14px; color: #d6d1ce; line-height: 1.5; display: flex; flex-direction: column; gap: 12px;">
+          <div id="confirm-popup-content" style="padding: 20px; overflow-y: auto; -webkit-overflow-scrolling: touch; flex: 1; min-height: 0; font-family: inherit; font-size: 14px; color: #d6d1ce; line-height: 1.5; display: block;">
           </div>
           <div style="padding: 20px; border-top: 1px solid rgba(151,29,204,0.2); display: flex; gap: 12px; background: #0a0a0a;">
             <button id="confirm-btn-cancel" style="-webkit-appearance: none; flex: 1; padding: 12px; border: 1px solid rgba(255,255,255,0.2); background: transparent; color: #ffffff; font-weight: 600; border-radius: 6px; cursor: pointer; transition: all 0.2s ease;">Edit Details</button>
@@ -992,6 +992,13 @@ document.addEventListener('focusin', (e) => {
     
     const contentDiv = document.getElementById("confirm-popup-content");
     contentDiv.innerHTML = "";
+    
+    // Stop propagation of scroll events to prevent page-level hijacking by parent container/Framer scripts
+    if (!contentDiv.dataset.scrollSetup) {
+      contentDiv.addEventListener("wheel", e => e.stopPropagation(), { passive: true });
+      contentDiv.addEventListener("touchmove", e => e.stopPropagation(), { passive: true });
+      contentDiv.dataset.scrollSetup = "true";
+    }
     
     const displayMap = [
       { key: "Employee ID", label: "Employee ID" },
@@ -1030,7 +1037,7 @@ document.addEventListener('focusin', (e) => {
       let val = dataObj[item.key];
       if (val !== undefined && val !== null && val.toString().trim() !== "") {
         const row = document.createElement("div");
-        row.style.cssText = "display: flex; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; justify-content: space-between;";
+        row.style.cssText = "display: flex; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; justify-content: space-between; margin-bottom: 12px;";
         row.innerHTML = `
           <span style="color: rgba(214, 209, 206, 0.6); font-weight: 500; min-width: 180px; text-align: left;">${item.label}</span>
           <span style="color: #ffffff; font-weight: 600; text-align: right; word-break: break-all; margin-left: 12px;">${val}</span>
