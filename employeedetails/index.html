@@ -97,15 +97,20 @@
         transition: background-color 5000s ease-in-out 0s !important;
         border: none !important;
     }
-    /* Specific adjustments for file inputs to position text cleanly */
+    /* Specific adjustments for file inputs to position text cleanly and show upload icon */
     form div.framer-form-input-wrapper input[type="file"] {
+        height: 100% !important;
         line-height: 48px !important;
-        color: #d6d1ce !important;
-        padding: 8px 42px 8px 0 !important;
+        color: #8a8885 !important; /* Muted gray text color matching main theme */
+        padding: 0 42px 0 0 !important; /* Zero vertical padding for vertical centering */
         box-sizing: border-box !important;
         text-overflow: ellipsis !important;
         white-space: nowrap !important;
         overflow: hidden !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23971dcc' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 0 center !important;
+        background-size: 16px !important;
     }
     /* Specific adjustments for date picker fields and Safari inner edit blocks */
     form div.framer-form-input-wrapper input[type="date"] {
@@ -856,7 +861,7 @@ document.addEventListener('focusin', (e) => {
               <p dir="auto" style="--framer-line-height:1.4em;--framer-text-color:var(--token-d921056f-bd82-43c0-a847-988798500c6a, rgb(214, 209, 206))" class="framer-text">Cancelled Cheque <span style="opacity: 0.65; font-size: 13px; font-weight: normal; margin-left: 6px;">(if applicable)</span></p>
             </div>
             <div class="framer-form-text-input framer-form-input-wrapper framer-ucd3n2 framer-form-text-input-type">
-              <input type="file" name="CancelledCheque" accept="image/*,application/pdf" class="framer-form-input framer-form-input-empty" style="height: 100%; width: 100%; border: none; background: transparent; display: block; box-sizing: border-box; transform: translateY(0);" value>
+              <input type="file" name="CancelledCheque" accept="image/*,application/pdf" class="framer-form-input framer-form-input-empty" style="height: 100%; width: 100%; border: none; background-color: transparent; display: block; box-sizing: border-box; transform: translateY(0);" value>
             </div>
           `;
           
