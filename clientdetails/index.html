@@ -294,7 +294,7 @@
   }
 
 /* ------------------------------------------------------------------------
-   TOP-LEFT LOGO & MOBILE HERO TEXT (DESKTOP PARITY AT TOP)
+   TOP-LEFT LOGO & COMPLETE HERO TEXT REMOVAL ON MOBILE
    ------------------------------------------------------------------------ */
 #leapuzo-top-nav {
   position: absolute !important;
@@ -306,11 +306,23 @@
   pointer-events: auto !important;
 }
 
-.leapuzo-header-logo-img {
-  height: 28px !important;
-  width: auto !important;
-  display: block !important;
-  object-fit: contain !important;
+.leapuzo-brand-logo {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+  letter-spacing: -0.02em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.leapuzo-brand-logo .brand-white {
+  color: #FFFFFF !important;
+}
+
+.leapuzo-brand-logo .brand-purple {
+  color: #971dcc !important;
 }
 
 @media (max-width: 810px) {
@@ -319,28 +331,11 @@
     left: 16px !important;
   }
   
-  .leapuzo-header-logo-img {
-    height: 24px !important;
+  .leapuzo-brand-logo {
+    font-size: 20px !important;
   }
 
-  /* Full height Hero Container */
-  .framer-wr2ci8,
-  [data-framer-name="About"],
-  .framer-9ebtwc {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-height: auto !important;
-    height: auto !important;
-    padding: 60px 16px 30px 16px !important;
-    box-sizing: border-box !important;
-    position: relative !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-  }
-
-  /* Desktop Tagline ("Your leap starts here") shown on mobile at top */
+  /* Completely REMOVE all hero text ("Your leap starts here", "Share your project requirements...") on Mobile */
   .framer-msgo5u,
   .framer-msgo5u p,
   .framer-msgo5u span,
@@ -348,62 +343,39 @@
   .framer-1yj7jpl,
   .framer-1yj7jpl p,
   .framer-i7i8xn,
-  .framer-i7i8xn p {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 22px !important;
-    line-height: 1.3 !important;
-    font-weight: 700 !important;
-    color: #FFFFFF !important;
-    margin: 12px auto 10px auto !important;
-    padding: 0 !important;
-    text-align: center !important;
-    display: block !important;
-    white-space: normal !important;
-    word-break: keep-all !important;
-    word-wrap: normal !important;
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    width: 100% !important;
-    height: auto !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-
-  .framer-msgo5u span {
-    color: #971dcc !important;
-  }
-
-  /* Desktop Subtitle ("Share your project requirements...") shown on mobile at top */
+  .framer-i7i8xn p,
   .framer-124y1ds,
   .framer-124y1ds p,
   .framer-1y9v8zv,
   .framer-1y9v8zv p {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 13px !important;
-    line-height: 1.5 !important;
-    font-weight: 400 !important;
-    color: rgba(255, 255, 255, 0.75) !important;
-    margin: 0 auto 20px auto !important;
-    padding: 0 8px !important;
-    text-align: center !important;
-    display: block !important;
-    white-space: normal !important;
-    word-break: keep-all !important;
-    word-wrap: normal !important;
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    width: 100% !important;
-    max-width: 90% !important;
-    height: auto !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
   }
 
-  /* BEGIN Action Button spacing below desktop text on mobile */
+  /* Full screen height (100vh) Hero Section on Mobile */
+  .framer-wr2ci8,
+  [data-framer-name="About"],
+  .framer-9ebtwc {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    padding: 60px 16px 40px 16px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Center BEGIN button vertically within full-height Hero Section */
   .framer-1eo2ys7-container,
   .framer-ytztka-container:not(.footer-btn) {
     position: relative !important;
@@ -412,12 +384,13 @@
     transform: none !important;
     width: auto !important;
     height: auto !important;
-    margin: 0 auto 24px auto !important;
+    margin: auto 0 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
   }
 }
+
 </style>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
@@ -1133,7 +1106,7 @@
 
 <div id="leapuzo-top-nav">
   <a href="https://leapuzo.in" class="leapuzo-brand-logo">
-    <img src="leapuzo_logo.png" alt="Leapuzo" class="leapuzo-header-logo-img" style="height: 28px; width: auto; display: block;" />
+    <span class="brand-white">Leap</span><span class="brand-purple">uzo</span>
   </a>
 </div>
 
