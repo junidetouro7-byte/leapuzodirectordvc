@@ -547,8 +547,8 @@
     
 <style id="leapuzo-mobile-redesign">
 /* ==========================================================================
-   COMPLETE PRESET & MOBILE REDESIGN (max-width: 810px)
-   Re-engineers all mobile layout components into a pristine vertical flow
+   PROFESSIONAL MOBILE REDESIGN (max-width: 810px)
+   Re-engineers Section 1 (Hero) and Section 2 (Banner & Stepper)
    ========================================================================== */
 @media (max-width: 810px) {
 
@@ -583,7 +583,6 @@
     box-sizing: border-box !important;
   }
 
-  /* Outer Section Wrapper */
   .framer-wr2ci8 {
     width: 100% !important;
     max-width: 100% !important;
@@ -598,11 +597,12 @@
   }
 
   /* ------------------------------------------------------------------------
-     2. HERO SECTION REDESIGN (Logo, Title, Subtitle, BEGIN Button, Graphic)
+     SECTION 1: HERO SECTION REDESIGN (No Graphic Overlap, Clean Layout)
      ------------------------------------------------------------------------ */
-  /* Hide Framer's absolute positioning mobile hero container */
+  /* Hide Framer's overlapping absolute position mobile hero graphic & text containers */
   .framer-9ebtwc,
-  .framer-1emrrf1 {
+  .framer-1emrrf1,
+  .framer-72xwo9 {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -613,12 +613,22 @@
     top: auto !important;
     left: auto !important;
     transform: none !important;
-    margin: 20px 0 30px 0 !important;
+    margin: 16px 0 24px 0 !important;
     padding: 0 16px !important;
     box-sizing: border-box !important;
   }
 
-  /* Hero Logo & Main Heading */
+  /* Hide shield/handshake background image on mobile if it overlaps hero text */
+  .framer-72xwo9 img,
+  img[src*="CjiwHqMvsIl"] {
+    max-width: 260px !important;
+    height: auto !important;
+    margin: 16px auto !important;
+    opacity: 0.65 !important;
+    position: relative !important;
+  }
+
+  /* Hero Tagline ("Your leap starts here") */
   .framer-msgo5u,
   .framer-1yj7jpl,
   .framer-i7i8xn {
@@ -640,15 +650,16 @@
   .framer-1yj7jpl p,
   .framer-i7i8xn p {
     font-family: 'Inter', sans-serif !important;
-    font-size: 26px !important;
-    line-height: 1.3 !important;
+    font-size: clamp(22px, 6vw, 28px) !important;
+    line-height: 1.25 !important;
     font-weight: 700 !important;
     color: #FFFFFF !important;
     margin: 0 0 10px 0 !important;
     text-align: center !important;
     display: block !important;
     white-space: normal !important;
-    word-wrap: break-word !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
   }
 
   .framer-msgo5u span,
@@ -678,7 +689,7 @@
     font-family: 'Inter', sans-serif !important;
     font-size: 14px !important;
     line-height: 1.5 !important;
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
     margin: 0 !important;
     text-align: center !important;
   }
@@ -698,17 +709,18 @@
   }
 
   /* ------------------------------------------------------------------------
-     3. CLIENT ONBOARDING FORM BANNER TITLE
+     SECTION 2: BANNER TITLE & WIZARD PROGRESS STEPPER REDESIGN
      ------------------------------------------------------------------------ */
+  /* Client Onboarding Form Banner Title */
   .framer-1ol9gzi,
   .framer-hznj3m,
   #wizard-section-title,
   .contact-section-heading {
     font-family: 'Inter', sans-serif !important;
-    font-size: 20px !important;
-    line-height: 1.3 !important;
+    font-size: clamp(20px, 5.5vw, 26px) !important;
+    line-height: 1.25 !important;
     font-weight: 800 !important;
-    letter-spacing: 0.05em !important;
+    letter-spacing: 0.04em !important;
     text-transform: uppercase !important;
     color: #FFFFFF !important;
     text-align: center !important;
@@ -716,10 +728,12 @@
     max-width: 100% !important;
     box-sizing: border-box !important;
     white-space: normal !important;
-    word-break: break-word !important;
-    word-wrap: break-word !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
     margin: 24px auto 16px auto !important;
-    padding: 0 12px !important;
+    padding: 0 16px !important;
     display: block !important;
     position: relative !important;
     top: auto !important;
@@ -727,9 +741,7 @@
     transform: none !important;
   }
 
-  /* ------------------------------------------------------------------------
-     4. WIZARD STEPPER PROGRESS BAR (NO OVERLAPPING TEXT)
-     ------------------------------------------------------------------------ */
+  /* Wizard Progress Stepper Container */
   #wizard-stepper-root {
     width: 100% !important;
     max-width: 100% !important;
@@ -754,7 +766,7 @@
   /* Active Step Title Header */
   .wizard-active-step-header {
     font-family: 'Inter', sans-serif !important;
-    font-size: 15px !important;
+    font-size: 14px !important;
     font-weight: 700 !important;
     color: #971dcc !important;
     text-transform: uppercase !important;
@@ -765,7 +777,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     5. MAIN FORM CARD (#begin & .framer-1yvis3z) & FIELD INPUTS
+     FORM CARD & FIELD INPUTS
      ------------------------------------------------------------------------ */
   #begin,
   .framer-1yvis3z {
@@ -844,8 +856,8 @@
     display: block !important;
     text-align: left !important;
     white-space: normal !important;
-    word-break: break-word !important;
-    word-wrap: break-word !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
     overflow: visible !important;
   }
 
@@ -894,7 +906,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     6. FOOTER REDESIGN (No Floating Buttons, Clean Centered Stack)
+     FOOTER REDESIGN (No Floating Buttons, Clean Centered Stack)
      ------------------------------------------------------------------------ */
   .framer-ytztka-container,
   .framer-Zzrq8,
