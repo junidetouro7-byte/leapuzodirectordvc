@@ -544,54 +544,463 @@
     <!-- End of headEnd -->
 	
 
-    <style id="leapuzo-client-custom-fixes">
-      /* Hide Framer "Made with Framer" badge completely */
-      #__framer-badge-container,
-      .__framer-badge,
-      [class*="framer-badge"],
-      [id*="framer-badge"] {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-        width: 0 !important;
-        height: 0 !important;
-        overflow: hidden !important;
-      }
+    
+<style id="leapuzo-mobile-redesign">
+/* ==========================================================================
+   PROFESSIONAL MOBILE REDESIGN (max-width: 810px)
+   Re-engineers Section 1 (Hero) and Section 2 (Banner & Stepper)
+   ========================================================================== */
+@media (max-width: 810px) {
 
-      /* Upload icon on far right end for file upload inputs (Logo & Brand Guidelines) */
-      #begin input[name*="Upload" i],
-      #begin input[name*="logo" i],
-      #begin input[name*="Logo" i],
-      #begin input[name*="Brand" i],
-      #begin input[name*="guideline" i],
-      #begin input[type="file"],
-      .framer-1cik6jj input,
-      .framer-1yfg1o input,
-      input[type="file"].framer-form-input {
-        color: #ffffff !important;
-        cursor: pointer !important;
-        padding-right: 48px !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23971dcc' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5'/%3E%3C/svg%3E") !important;
-        background-repeat: no-repeat !important;
-        background-position: right 14px center !important;
-        background-size: 20px !important;
-        background-color: rgba(0, 0, 0, 0.15) !important;
-      }
+  /* ------------------------------------------------------------------------
+     1. GLOBAL VIEWPORT & RESET
+     ------------------------------------------------------------------------ */
+  html, body {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    background-color: #0B0715 !important;
+    background-image: 
+      radial-gradient(ellipse 100% 70% at 50% 50%, rgba(151, 29, 204, 0.15) 0%, rgba(151, 29, 204, 0.05) 35%, transparent 75%),
+      linear-gradient(rgba(168, 85, 247, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168, 85, 247, 0.08) 1px, transparent 1px) !important;
+    background-size: 100% 100%, 40px 40px, 40px 40px !important;
+    box-sizing: border-box !important;
+  }
 
-      #begin input[type="file"]::file-selector-button,
-      input[type="file"].framer-form-input::file-selector-button {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        border: none !important;
-      }
-    </style>
+  #main,
+  [data-framer-root],
+  .framer-fAmuS,
+  .framer-Hc87U,
+  .framer-j1Dmt,
+  .framer-72rtr7,
+  .framer-YFSWa,
+  .framer-1arnfpt {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    background: transparent !important;
+    box-sizing: border-box !important;
+  }
+
+  .framer-wr2ci8 {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 12px 10px 60px 10px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* ------------------------------------------------------------------------
+     SECTION 1: HERO SECTION REDESIGN (No Graphic Overlap, Clean Layout)
+     ------------------------------------------------------------------------ */
+  /* Hide Framer's overlapping absolute position mobile hero graphic & text containers */
+  .framer-9ebtwc,
+  .framer-1emrrf1,
+  .framer-72xwo9 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin: 16px 0 24px 0 !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Hide shield/handshake background image on mobile if it overlaps hero text */
+  .framer-72xwo9 img,
+  img[src*="CjiwHqMvsIl"] {
+    max-width: 260px !important;
+    height: auto !important;
+    margin: 16px auto !important;
+    opacity: 0.65 !important;
+    position: relative !important;
+  }
+
+  /* Hero Tagline ("Your leap starts here") */
+  .framer-msgo5u,
+  .framer-1yj7jpl,
+  .framer-i7i8xn {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    margin: 0 0 12px 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+
+  .framer-msgo5u p,
+  .framer-1yj7jpl p,
+  .framer-i7i8xn p {
+    font-family: 'Inter', sans-serif !important;
+    font-size: clamp(22px, 6vw, 28px) !important;
+    line-height: 1.25 !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    margin: 0 0 10px 0 !important;
+    text-align: center !important;
+    display: block !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
+  }
+
+  .framer-msgo5u span,
+  .framer-1yj7jpl span {
+    color: #971dcc !important;
+  }
+
+  /* ------------------------------------------------------------------------
+     HERO SECTION REDESIGN: Remove Subtitle & Compact Heading at Top Black Space
+     ------------------------------------------------------------------------ */
+  /* Completely REMOVE long subtitle text ("Share your project requirements...") */
+  .framer-124y1ds,
+  .framer-124y1ds p,
+  .framer-1y9v8zv,
+  .framer-1y9v8zv p {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Make Hero Tagline ("Your leap starts here") compact, smaller (18px), and positioned in top dark space */
+  .framer-msgo5u,
+  .framer-msgo5u p,
+  .framer-msgo5u span,
+  .framer-msgo5u .framer-text,
+  .framer-1yj7jpl,
+  .framer-1yj7jpl p,
+  .framer-i7i8xn,
+  .framer-i7i8xn p {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    line-height: 1.3 !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    color: #FFFFFF !important;
+    margin: 8px auto 12px auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+    display: block !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .framer-msgo5u span {
+    color: #971dcc !important;
+  }
+
+  /* Compact BEGIN button */
+  .framer-1eo2ys7-container,
+  .framer-ytztka-container:not(.footer-btn) {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 auto 16px auto !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* ------------------------------------------------------------------------
+     SECTION 2: BANNER TITLE & WIZARD PROGRESS STEPPER REDESIGN
+     ------------------------------------------------------------------------ */
+  /* Client Onboarding Form Banner Title */
+  .framer-1ol9gzi,
+  .framer-hznj3m,
+  #wizard-section-title,
+  .contact-section-heading {
+    font-family: 'Inter', sans-serif !important;
+    font-size: clamp(20px, 5.5vw, 26px) !important;
+    line-height: 1.25 !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    color: #FFFFFF !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    margin: 24px auto 16px auto !important;
+    padding: 0 16px !important;
+    display: block !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+  }
+
+  /* Wizard Progress Stepper Container */
+  #wizard-stepper-root {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 0 24px 0 !important;
+    padding: 0 8px !important;
+  }
+
+  /* Hide messy sub-caption labels under step circles on mobile */
+  .progress-step-title,
+  .progress-step-sub {
+    display: none !important;
+  }
+
+  .progress-step-circle {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+  }
+
+  /* Active Step Title Header */
+  .wizard-active-step-header {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #971dcc !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    text-align: center !important;
+    margin: 12px 0 16px 0 !important;
+    width: 100% !important;
+  }
+
+  /* ------------------------------------------------------------------------
+     FORM CARD & FIELD INPUTS
+     ------------------------------------------------------------------------ */
+  #begin,
+  .framer-1yvis3z {
+    width: 100% !important;
+    max-width: 480px !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 20px 16px !important;
+    margin: 0 auto 30px auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    height: auto !important;
+    min-height: auto !important;
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    background: rgba(13, 8, 24, 0.85) !important;
+    border: 1px solid rgba(151, 29, 204, 0.35) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  /* Label containers reset to vertical flex stack */
+  #begin label,
+  .framer-1yvis3z label,
+  label[data-step] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: auto !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 0 0 18px 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Reset inner label wrapper divs */
+  #begin label > div,
+  #begin label .ssr-variant,
+  #begin label .framer-iq7pyu,
+  #begin label [data-framer-component-type="RichTextContainer"] {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 0 6px 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  /* Label Typography */
+  #begin label p,
+  #begin label span,
+  #begin label .framer-text {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.35 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin: 0 0 6px 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
+    overflow: visible !important;
+  }
+
+  /* Inputs, Selects, Textareas */
+  #begin .framer-form-text-input,
+  #begin .framer-form-input-wrapper,
+  #begin .framer-form-select-wrapper,
+  #begin .expandable-textarea-wrapper,
+  #begin input,
+  #begin select,
+  #begin textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+  }
+
+  #begin input[type="text"],
+  #begin input[type="email"],
+  #begin input[type="tel"],
+  #begin input[type="number"],
+  #begin select {
+    height: 48px !important;
+    min-height: 48px !important;
+    line-height: 48px !important;
+    font-size: 15px !important;
+    border-radius: 10px !important;
+    padding: 0 16px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(151, 29, 204, 0.4) !important;
+    color: #FFFFFF !important;
+  }
+
+  /* File upload visible text inputs */
+  #begin input[name*="Upload" i],
+  #begin input[name*="logo" i],
+  #begin input[name*="Logo" i],
+  #begin input[name*="Brand" i],
+  #begin input[name*="guideline" i] {
+    padding-right: 46px !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23971dcc' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 18px !important;
+  }
+
+  /* ------------------------------------------------------------------------
+     FOOTER REDESIGN (No Floating Buttons, Clean Centered Stack)
+     ------------------------------------------------------------------------ */
+  .framer-ytztka-container,
+  .framer-Zzrq8,
+  a[href*="START"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .framer-lrmfcq,
+  .framer-11s640i,
+  .framer-1crry6v,
+  footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 40px 16px !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .framer-1znye5,
+  .framer-3zdvvs,
+  .framer-allinfo,
+  .framer-i26irx,
+  .framer-xvjj9p,
+  .framer-1y01llr {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 4px 0 !important;
+    text-align: center !important;
+  }
+
+  .framer-3zdvvs {
+    margin-bottom: 12px !important;
+  }
+
+  /* Hide Framer "Made with Framer" badge */
+  #__framer-badge-container,
+  .__framer-badge,
+  [class*="framer-badge"],
+  [id*="framer-badge"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
+}
+</style>
+
     
 </head>
 <body>
@@ -4199,6 +4608,368 @@
       window.addEventListener('load', sanitizeWebsiteUrlField);
       setInterval(sanitizeWebsiteUrlField, 500);
     </script>
+
+
+<style id="leapuzo-mobile-master-fix">
+/* ==========================================================================
+   MASTER MOBILE RECTIFICATION & REDESIGN (max-width: 810px)
+   ========================================================================== */
+@media (max-width: 810px) {
+
+  /* 1. Prevent Horizonal Scroll & Viewport Clipping */
+  html, body, #main, [data-framer-root], .framer-fAmuS, .framer-YFSWa {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    background-color: #0B0715 !important;
+    box-sizing: border-box !important;
+  }
+
+  .framer-wr2ci8 {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 12px 10px 60px 10px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  /* 2. HERO SECTION FIX: Hide overlapping shield/handshake graphic on mobile */
+  .framer-72xwo9,
+  div:has(> img[src*="CjiwHqMvsIl"]),
+  img[src*="CjiwHqMvsIl"],
+  img[srcset*="CjiwHqMvsIl"] {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Hero Tagline ("Your leap starts here") */
+  .framer-msgo5u,
+  .framer-msgo5u p,
+  .framer-msgo5u span,
+  .framer-msgo5u .framer-text,
+  .framer-1yj7jpl,
+  .framer-1yj7jpl p,
+  .framer-i7i8xn,
+  .framer-i7i8xn p {
+    font-family: 'Inter', sans-serif !important;
+    font-size: clamp(22px, 6vw, 28px) !important;
+    line-height: 1.25 !important;
+    font-weight: 700 !important;
+    color: #FFFFFF !important;
+    margin: 0 auto 10px auto !important;
+    text-align: center !important;
+    display: block !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .framer-msgo5u span {
+    color: #971dcc !important;
+  }
+
+  /* ------------------------------------------------------------------------
+     HERO SECTION REDESIGN: Remove Subtitle & Compact Heading at Top Black Space
+     ------------------------------------------------------------------------ */
+  /* Completely REMOVE long subtitle text ("Share your project requirements...") */
+  .framer-124y1ds,
+  .framer-124y1ds p,
+  .framer-1y9v8zv,
+  .framer-1y9v8zv p {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Make Hero Tagline ("Your leap starts here") compact, smaller (18px), and positioned in top dark space */
+  .framer-msgo5u,
+  .framer-msgo5u p,
+  .framer-msgo5u span,
+  .framer-msgo5u .framer-text,
+  .framer-1yj7jpl,
+  .framer-1yj7jpl p,
+  .framer-i7i8xn,
+  .framer-i7i8xn p {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 18px !important;
+    line-height: 1.3 !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.04em !important;
+    color: #FFFFFF !important;
+    margin: 8px auto 12px auto !important;
+    padding: 0 !important;
+    text-align: center !important;
+    display: block !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .framer-msgo5u span {
+    color: #971dcc !important;
+  }
+
+  /* Compact BEGIN button */
+  .framer-1eo2ys7-container,
+  .framer-ytztka-container:not(.footer-btn) {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 auto 16px auto !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* 3. BANNER TITLE FIX: Prevent "Client Onboarding Form" from splitting into "Onboardin g" */
+  .framer-1ol9gzi,
+  .framer-1ol9gzi p,
+  .framer-1ol9gzi span,
+  .framer-1ol9gzi .framer-text,
+  .framer-hznj3m,
+  .framer-hznj3m p,
+  .framer-hznj3m span,
+  .framer-hznj3m .framer-text,
+  #wizard-section-title,
+  .contact-section-heading {
+    font-family: 'Inter', sans-serif !important;
+    font-size: clamp(20px, 5.5vw, 26px) !important;
+    line-height: 1.25 !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    color: #FFFFFF !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
+    hyphens: none !important;
+    -webkit-hyphens: none !important;
+    margin: 20px auto 16px auto !important;
+    padding: 0 12px !important;
+    display: block !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+  }
+
+  /* 4. WIZARD STEPPER PROGRESS BAR FIX: Hide overlapping step captions under circles */
+  #wizard-stepper-root {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 0 24px 0 !important;
+    padding: 0 8px !important;
+  }
+
+  .progress-step-title,
+  .progress-step-sub,
+  .progress-step-label span,
+  .wizard-progress-step-text {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+  }
+
+  .progress-step-circle {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+  }
+
+  .wizard-active-step-header {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #971dcc !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    text-align: center !important;
+    margin: 12px 0 16px 0 !important;
+    width: 100% !important;
+  }
+
+  /* 5. FORM CARD & INPUT FIXES */
+  #begin,
+  .framer-1yvis3z {
+    width: 100% !important;
+    max-width: 480px !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    padding: 20px 16px !important;
+    margin: 0 auto 30px auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    height: auto !important;
+    min-height: auto !important;
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    transform: none !important;
+    background: rgba(13, 8, 24, 0.85) !important;
+    border: 1px solid rgba(151, 29, 204, 0.35) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  #begin label,
+  .framer-1yvis3z label,
+  label[data-step] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: auto !important;
+    min-height: auto !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 0 0 18px 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #begin label p,
+  #begin label span,
+  #begin label .framer-text {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.35 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin: 0 0 6px 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    text-align: left !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+    word-wrap: normal !important;
+    overflow: visible !important;
+  }
+
+  #begin input[type="text"],
+  #begin input[type="email"],
+  #begin input[type="tel"],
+  #begin input[type="number"],
+  #begin select {
+    height: 48px !important;
+    min-height: 48px !important;
+    line-height: 48px !important;
+    font-size: 15px !important;
+    border-radius: 10px !important;
+    padding: 0 16px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(151, 29, 204, 0.4) !important;
+    color: #FFFFFF !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* File upload visible text inputs */
+  #begin input[name*="Upload" i],
+  #begin input[name*="logo" i],
+  #begin input[name*="Logo" i],
+  #begin input[name*="Brand" i],
+  #begin input[name*="guideline" i] {
+    padding-right: 46px !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23971dcc' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 18px !important;
+  }
+
+  /* 6. FOOTER FIX: Hide floating START button, clean vertical stack */
+  .framer-ytztka-container,
+  .framer-Zzrq8,
+  a[href*="START"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  .framer-lrmfcq,
+  .framer-11s640i,
+  .framer-1crry6v,
+  footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 40px 16px !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .framer-1znye5,
+  .framer-3zdvvs,
+  .framer-allinfo,
+  .framer-i26irx,
+  .framer-xvjj9p,
+  .framer-1y01llr {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 4px 0 !important;
+    text-align: center !important;
+  }
+}
+</style>
 
 </body>
 
