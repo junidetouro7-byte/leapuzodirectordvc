@@ -42,31 +42,23 @@
         border-color: #971dcc !important;
         box-shadow: 0 0 10px rgba(151, 29, 204, 0.8) !important;
     }
-    input.framer-form-input,
-    select.framer-form-input {
-        color: #ffffff !important;
+    /* Globally remove default borders, outlines, backgrounds, and shadows from all raw input elements */
+    input, select, textarea {
         border: none !important;
-        outline: none !important;
-        box-shadow: none !important;
-        background: transparent !important;
-    }
-    .framer-form-input-wrapper input,
-    .framer-form-input-wrapper select,
-    .framer-form-input-wrapper textarea {
-        border: none !important;
+        border-width: 0 !important;
         outline: none !important;
         box-shadow: none !important;
         background: transparent !important;
         color: #ffffff !important;
     }
-    .framer-form-input-wrapper input:focus,
-    .framer-form-input-wrapper select:focus,
-    .framer-form-input-wrapper textarea:focus {
+    input:focus, select:focus, textarea:focus {
         border: none !important;
+        border-width: 0 !important;
         outline: none !important;
         box-shadow: none !important;
+        background: transparent !important;
     }
-    input[type="file"].framer-form-input {
+    input[type="file"] {
         color: #d6d1ce !important;
     }
     </style>
