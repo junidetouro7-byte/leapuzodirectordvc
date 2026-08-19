@@ -319,6 +319,64 @@
 	<link rel="canonical" href="index.html"><meta property="og:url" content="https://leapuzoclientform.framer.website/"><!-- Start of headStart -->
     
     <!-- End of headStart -->
+    <style id="leapuzo-client-fixes">
+      /* 1. Hide Framer "Made with Framer" badge completely */
+      #__framer-badge-container,
+      .__framer-badge,
+      [class*="framer-badge"],
+      [id*="framer-badge"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+      }
+
+      /* 2. Hero flash fix — hide the secondary hero background image that flickers
+             for ~0.2s before the JS removes it. Force it invisible from paint. */
+      img[src*="CjiwHqMvsIl6NoXO2Z1LMgfo"],
+      img[srcset*="CjiwHqMvsIl6NoXO2Z1LMgfo"],
+      img[src*="ch2rYKkAwDFBYp0tW3WviFXlo"],
+      img[srcset*="ch2rYKkAwDFBYp0tW3WviFXlo"],
+      img[src*="CT6HN8HY67ud1L7V5s6mRkUOuv"],
+      img[srcset*="CT6HN8HY67ud1L7V5s6mRkUOuv"],
+      .framer-9ebtwc [data-framer-background-image-wrapper="true"],
+      div:has(> img[src*="CjiwHqMvsIl6NoXO2Z1LMgfo"]),
+      div:has(> img[src*="ch2rYKkAwDFBYp0tW3WviFXlo"]),
+      div:has(> img[src*="CT6HN8HY67ud1L7V5s6mRkUOuv"]) {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        display: none !important;
+      }
+
+      /* 3. File upload inputs — show violet upload icon on right, center text */
+      #begin input[type="file"],
+      input[type="file"].framer-form-input {
+        color: #8a8885 !important;
+        cursor: pointer !important;
+        padding-right: 42px !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23971dcc' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5'/%3E%3C/svg%3E") !important;
+        background-repeat: no-repeat !important;
+        background-position: right 10px center !important;
+        background-size: 18px !important;
+        background-color: transparent !important;
+      }
+      #begin input[type="file"]::file-selector-button,
+      input[type="file"].framer-form-input::file-selector-button {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+      }
+    </style>
+
 	
 	<style data-framer-font-css>/* cyrillic-ext */
 @font-face {
@@ -570,9 +628,13 @@
   // browser native URL validation ("Please enter a URL.") blocking form submission.
   // The field is optional and should accept plain inputs like "leapuzo.com".
   document.addEventListener('DOMContentLoaded', function() {
+    // Fix Website URL field: remove all browser validation so any text is accepted
     const urlInput = document.querySelector('input[name="Website URL(if available)"]');
     if (urlInput) {
       urlInput.type = 'text';
+      urlInput.removeAttribute('required');
+      urlInput.removeAttribute('pattern');
+      urlInput.removeAttribute('title');
     }
   });
 
