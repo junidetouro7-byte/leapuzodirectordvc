@@ -566,6 +566,16 @@
 (function() {
   window.GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUlDdlxKZPnz8KnlC4fZHItALA8a3peccLCCfRUY9M1IdWAQfdEQ85sld0X1mPuxvVPA/exec";
 
+  // Fix: Change Website URL field from type="url" to type="text" to prevent
+  // browser native URL validation ("Please enter a URL.") blocking form submission.
+  // The field is optional and should accept plain inputs like "leapuzo.com".
+  document.addEventListener('DOMContentLoaded', function() {
+    const urlInput = document.querySelector('input[name="Website URL(if available)"]');
+    if (urlInput) {
+      urlInput.type = 'text';
+    }
+  });
+
 
 
 
