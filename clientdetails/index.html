@@ -292,6 +292,87 @@
     mix-blend-mode: normal !important;
     filter: none !important;
   }
+
+/* ------------------------------------------------------------------------
+   TOP-LEFT LOGO & COMPLETE HERO TEXT REMOVAL ON MOBILE
+   ------------------------------------------------------------------------ */
+#leapuzo-top-nav {
+  position: absolute !important;
+  top: 16px !important;
+  left: 20px !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  pointer-events: auto !important;
+}
+
+.leapuzo-brand-logo {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: #FFFFFF !important;
+  text-decoration: none !important;
+  letter-spacing: -0.02em !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.leapuzo-brand-logo .brand-white {
+  color: #FFFFFF !important;
+}
+
+.leapuzo-brand-logo .brand-purple {
+  color: #971dcc !important;
+}
+
+@media (max-width: 810px) {
+  #leapuzo-top-nav {
+    top: 14px !important;
+    left: 16px !important;
+  }
+  
+  .leapuzo-brand-logo {
+    font-size: 20px !important;
+  }
+
+  /* Completely REMOVE all hero text ("Your leap starts here", "Share your project requirements...") on Mobile */
+  .framer-msgo5u,
+  .framer-msgo5u p,
+  .framer-msgo5u span,
+  .framer-msgo5u .framer-text,
+  .framer-1yj7jpl,
+  .framer-1yj7jpl p,
+  .framer-i7i8xn,
+  .framer-i7i8xn p,
+  .framer-124y1ds,
+  .framer-124y1ds p,
+  .framer-1y9v8zv,
+  .framer-1y9v8zv p {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Compact BEGIN button spacing from top header */
+  .framer-1eo2ys7-container,
+  .framer-ytztka-container:not(.footer-btn) {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 48px auto 16px auto !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+}
+
 </style>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
@@ -1004,6 +1085,13 @@
     
 </head>
 <body>
+
+<div id="leapuzo-top-nav">
+  <a href="https://leapuzo.in" class="leapuzo-brand-logo">
+    <span class="brand-white">Leap</span><span class="brand-purple">uzo</span>
+  </a>
+</div>
+
 	<script async src="https://events.framer.com/script?v=2" data-fid="d3d0d80607ebc9e862067d03fde11b7e0699c1b239263779defd3631b49c9786" data-no-nt></script>
 	<!-- Start of bodyStart -->
     
