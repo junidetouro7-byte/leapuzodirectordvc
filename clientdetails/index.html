@@ -391,6 +391,33 @@
   }
 }
 
+#leapuzo-top-nav {
+  position: absolute !important;
+  top: 16px !important;
+  left: 20px !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  pointer-events: auto !important;
+}
+
+.leapuzo-header-logo-img {
+  height: 28px !important;
+  width: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+
+@media (max-width: 810px) {
+  #leapuzo-top-nav {
+    top: 14px !important;
+    left: 16px !important;
+  }
+  
+  .leapuzo-header-logo-img {
+    height: 24px !important;
+  }
+}
 </style>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
@@ -1106,7 +1133,7 @@
 
 <div id="leapuzo-top-nav">
   <a href="https://leapuzo.in" class="leapuzo-brand-logo">
-    <span class="brand-white">Leap</span><span class="brand-purple">uzo</span>
+    <img src="leapuzo_logo.png" alt="Leapuzo" class="leapuzo-header-logo-img" style="height: 28px; width: auto; display: block;" />
   </a>
 </div>
 
