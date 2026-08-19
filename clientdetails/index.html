@@ -358,7 +358,24 @@
     pointer-events: none !important;
   }
 
-  /* Compact BEGIN button spacing from top header */
+  /* Full screen height (100vh) Hero Section on Mobile */
+  .framer-wr2ci8,
+  [data-framer-name="About"],
+  .framer-9ebtwc {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    padding: 60px 16px 40px 16px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Center BEGIN button vertically within full-height Hero Section */
   .framer-1eo2ys7-container,
   .framer-ytztka-container:not(.footer-btn) {
     position: relative !important;
@@ -367,9 +384,10 @@
     transform: none !important;
     width: auto !important;
     height: auto !important;
-    margin: 48px auto 16px auto !important;
+    margin: auto 0 !important;
     display: flex !important;
     justify-content: center !important;
+    align-items: center !important;
   }
 }
 
