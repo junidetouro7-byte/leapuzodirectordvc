@@ -319,6 +319,79 @@
     
     <!-- End of headStart -->
     <style id="leapuzo-client-fixes">
+      /* Root Framer Container Transparency — allows body grid & #leapuzo-hero-bg to be visible */
+      #main,
+      [data-framer-root],
+      .framer-fAmuS,
+      .framer-Hc87U,
+      .framer-j1Dmt,
+      .framer-72rtr7,
+      .framer-YFSWa,
+      .framer-1arnfpt {
+        background: transparent !important;
+        background-color: transparent !important;
+      }
+
+      /* Completely hide original Framer hero background images (Rubik's cube handshake guy & flicker photos) */
+      .framer-1emrrf1,
+      .framer-9ebtwc,
+      .framer-1yvis3z [data-framer-background-image-wrapper],
+      img[src*="FKFEvw9R5j6UIbUYskapgSQJByc"],
+      img[srcset*="FKFEvw9R5j6UIbUYskapgSQJByc"],
+      img[src*="CjiwHqMvsIl6NoXO2Z1LMgfo"],
+      img[srcset*="CjiwHqMvsIl6NoXO2Z1LMgfo"],
+      img[src*="ch2rYKkAwDFBYp0tW3WviFXlo"],
+      img[srcset*="ch2rYKkAwDFBYp0tW3WviFXlo"],
+      div:has(> img[src*="FKFEvw9R5j6UIbUYskapgSQJByc"]),
+      div:has(> img[srcset*="FKFEvw9R5j6UIbUYskapgSQJByc"]) {
+        display: none !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+        pointer-events: none !important;
+      }
+
+      /* Custom New Hero Background (Handshake + Lightbulb) */
+      #leapuzo-hero-bg {
+        position: fixed !important;
+        top: 0 !important;
+        right: 0 !important;
+        left: auto !important;
+        transform: none !important;
+        width: 65vw !important;
+        height: 100vh !important;
+        max-width: 950px !important;
+        pointer-events: none !important;
+        z-index: 0 !important;
+        background-image: url('hero-bg.png'), url('/clientdetails/hero-bg.png') !important;
+        background-size: cover !important;
+        background-position: center right !important;
+        background-repeat: no-repeat !important;
+        opacity: 0.85 !important;
+        filter: drop-shadow(-40px 0 80px rgba(139, 92, 246, 0.5)) !important;
+        animation: leapuzoHeroFloat 10s ease-in-out infinite alternate !important;
+        mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%) !important;
+        -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%) !important;
+      }
+
+      @keyframes leapuzoHeroFloat {
+        0% {
+          transform: scale(0.97) translateY(0px);
+          filter: drop-shadow(-40px 0 60px rgba(124, 58, 237, 0.4));
+          opacity: 0.70;
+        }
+        50% {
+          transform: scale(1.02) translateY(-12px);
+          filter: drop-shadow(-40px 0 90px rgba(168, 85, 247, 0.70));
+          opacity: 0.90;
+        }
+        100% {
+          transform: scale(0.99) translateY(8px);
+          filter: drop-shadow(-40px 0 70px rgba(192, 38, 211, 0.55));
+          opacity: 0.75;
+        }
+      }
       /* 1. Hide Framer "Made with Framer" badge completely */
       #__framer-badge-container,
       .__framer-badge,
@@ -599,6 +672,7 @@
 	
 </head>
 <body>
+<div id="leapuzo-hero-bg"></div>
 	<script async src="https://events.framer.com/script?v=2" data-fid="d3d0d80607ebc9e862067d03fde11b7e0699c1b239263779defd3631b49c9786" data-no-nt></script>
 	<!-- Start of bodyStart -->
     
