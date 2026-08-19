@@ -334,18 +334,15 @@
         overflow: hidden !important;
       }
 
-      /* 2. Hero flash fix — hide the secondary hero background image that flickers
-             for ~0.2s before the JS removes it. Force it invisible from paint. */
+      /* 2. Hero flash fix — hide ONLY the two landscape background images (1536×1024)
+             that briefly flash before the JS secondary-background removal runs.
+             The main hero graphic (.framer-9ebtwc) is NOT touched here. */
       img[src*="CjiwHqMvsIl6NoXO2Z1LMgfo"],
       img[srcset*="CjiwHqMvsIl6NoXO2Z1LMgfo"],
       img[src*="ch2rYKkAwDFBYp0tW3WviFXlo"],
       img[srcset*="ch2rYKkAwDFBYp0tW3WviFXlo"],
-      img[src*="CT6HN8HY67ud1L7V5s6mRkUOuv"],
-      img[srcset*="CT6HN8HY67ud1L7V5s6mRkUOuv"],
-      .framer-9ebtwc [data-framer-background-image-wrapper="true"],
       div:has(> img[src*="CjiwHqMvsIl6NoXO2Z1LMgfo"]),
-      div:has(> img[src*="ch2rYKkAwDFBYp0tW3WviFXlo"]),
-      div:has(> img[src*="CT6HN8HY67ud1L7V5s6mRkUOuv"]) {
+      div:has(> img[src*="ch2rYKkAwDFBYp0tW3WviFXlo"]) {
         opacity: 0 !important;
         visibility: hidden !important;
         display: none !important;
