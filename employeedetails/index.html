@@ -30,26 +30,46 @@
 	<script>try{if(localStorage.getItem("__framer_force_showing_editorbar_since")){const n=document.createElement("link");n.rel="modulepreload";n.href="https://framer.com/edit/init.mjs";document.head.appendChild(n)}}catch(e){}</script>
 	<link rel="canonical" href="index.html"><meta property="og:url" content="https://leapuzoemployeedetails.framer.website/"><!-- Start of headStart -->
     <style>
-    /* Make input boxes clearly visible with a border matching the theme */
+    /* Make all form input boxes clearly visible, uniform in size, and styled to match the theme */
     .framer-form-input-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        height: 48px !important;
+        width: 100% !important;
         border: 1.5px solid rgba(151, 29, 204, 0.8) !important;
         background-color: #0a0a0a !important;
         border-radius: 8px !important;
         box-sizing: border-box !important;
+        padding: 0 16px !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        position: relative !important;
         transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
     }
     .framer-form-input-wrapper:focus-within {
         border-color: #971dcc !important;
         box-shadow: 0 0 10px rgba(151, 29, 204, 0.8) !important;
     }
-    /* Globally remove default borders, outlines, backgrounds, and shadows from all raw input elements */
+    /* Globally strip default styling from the actual raw input elements inside the wrapper */
+    .framer-form-input-wrapper input,
+    .framer-form-input-wrapper select,
+    .framer-form-input-wrapper textarea,
     input, select, textarea {
         border: none !important;
         border-width: 0 !important;
         outline: none !important;
         box-shadow: none !important;
         background: transparent !important;
+        background-color: transparent !important;
         color: #ffffff !important;
+        width: 100% !important;
+        height: 100% !important;
+        font-size: 14px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        -webkit-appearance: none !important;
+        appearance: none !important;
     }
     input:focus, select:focus, textarea:focus {
         border: none !important;
@@ -57,9 +77,33 @@
         outline: none !important;
         box-shadow: none !important;
         background: transparent !important;
+        background-color: transparent !important;
     }
-    input[type="file"] {
+    /* Address browser Autofill overlays (Chrome/Safari) which override backgrounds and text colors */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 1000px #0a0a0a inset !important;
+        -webkit-text-fill-color: #ffffff !important;
+        transition: background-color 5000s ease-in-out 0s !important;
+        border: none !important;
+    }
+    /* Specific adjustments for file inputs to position text cleanly */
+    .framer-form-input-wrapper input[type="file"] {
+        line-height: 48px !important;
         color: #d6d1ce !important;
+        padding: 8px 0 !important;
+    }
+    /* Specific adjustments for date picker fields */
+    .framer-form-input-wrapper input[type="date"] {
+        min-height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    /* Give select elements padding on the right to not overlap with custom arrow */
+    .framer-form-input-wrapper select {
+        padding-right: 24px !important;
     }
     </style>
     <!-- End of headStart -->
