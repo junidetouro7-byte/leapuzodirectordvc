@@ -31,7 +31,8 @@
 	<link rel="canonical" href="index.html"><meta property="og:url" content="https://leapuzoemployeedetails.framer.website/"><!-- Start of headStart -->
     <style>
     /* Make all form input boxes clearly visible, uniform in size, and styled to match the theme */
-    .framer-form-input-wrapper {
+    form div.framer-form-input-wrapper,
+    div.framer-form-input-wrapper.framer-form-input-wrapper {
         display: flex !important;
         align-items: center !important;
         height: 48px !important;
@@ -44,16 +45,20 @@
         margin: 0 !important;
         overflow: hidden !important;
         position: relative !important;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
         transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
     }
-    .framer-form-input-wrapper:focus-within {
+    form div.framer-form-input-wrapper:focus-within,
+    div.framer-form-input-wrapper.framer-form-input-wrapper:focus-within {
         border-color: #971dcc !important;
         box-shadow: 0 0 10px rgba(151, 29, 204, 0.8) !important;
     }
     /* Globally strip default styling from the actual raw input elements inside the wrapper */
-    .framer-form-input-wrapper input,
-    .framer-form-input-wrapper select,
-    .framer-form-input-wrapper textarea,
+    form div.framer-form-input-wrapper input,
+    form div.framer-form-input-wrapper select,
+    form div.framer-form-input-wrapper textarea,
+    input.framer-form-input,
+    select.framer-form-input,
     input, select, textarea {
         border: none !important;
         border-width: 0 !important;
@@ -71,7 +76,10 @@
         -webkit-appearance: none !important;
         appearance: none !important;
     }
-    input:focus, select:focus, textarea:focus {
+    input:focus, select:focus, textarea:focus,
+    form div.framer-form-input-wrapper input:focus,
+    form div.framer-form-input-wrapper select:focus,
+    form div.framer-form-input-wrapper textarea:focus {
         border: none !important;
         border-width: 0 !important;
         outline: none !important;
@@ -90,19 +98,35 @@
         border: none !important;
     }
     /* Specific adjustments for file inputs to position text cleanly */
-    .framer-form-input-wrapper input[type="file"] {
+    form div.framer-form-input-wrapper input[type="file"] {
         line-height: 48px !important;
         color: #d6d1ce !important;
         padding: 8px 0 !important;
     }
-    /* Specific adjustments for date picker fields */
-    .framer-form-input-wrapper input[type="date"] {
+    /* Specific adjustments for date picker fields and Safari inner edit blocks */
+    form div.framer-form-input-wrapper input[type="date"] {
         min-height: 100% !important;
         display: flex !important;
         align-items: center !important;
     }
+    input::-webkit-datetime-edit,
+    input::-webkit-inner-spin-button,
+    input::-webkit-clear-button,
+    input::-webkit-datetime-edit-fields-wrapper,
+    input::-webkit-datetime-edit-text,
+    input::-webkit-datetime-edit-month-field,
+    input::-webkit-datetime-edit-day-field,
+    input::-webkit-datetime-edit-year-field {
+        background: transparent !important;
+        background-color: transparent !important;
+        color: inherit !important;
+        border: none !important;
+        border-width: 0 !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
     /* Give select elements padding on the right to not overlap with custom arrow */
-    .framer-form-input-wrapper select {
+    form div.framer-form-input-wrapper select {
         padding-right: 24px !important;
     }
     </style>
@@ -658,7 +682,7 @@ document.addEventListener('focusin', (e) => {
     if (!wrapper) return;
 
     if (errorMsg) {
-      input.style.setProperty("border-color", "#FF4D4D", "important");
+      wrapper.style.setProperty("border-color", "#FF4D4D", "important");
       
       // Traverse up to FORM and force overflow: visible
       let parent = wrapper;
@@ -694,7 +718,8 @@ document.addEventListener('focusin', (e) => {
       errorEl.style.setProperty("z-index", "100", "important");
       errorEl.style.setProperty("white-space", "nowrap", "important");
     } else {
-      input.style.setProperty("border-color", "", "");
+      wrapper.style.setProperty("border-color", "", "");
+      wrapper.style.setProperty("box-shadow", "", "");
       const errorEl = wrapper.querySelector(".framer-input-error");
       if (errorEl) {
         errorEl.style.setProperty("display", "none", "important");
