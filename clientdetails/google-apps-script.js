@@ -1,161 +1,177 @@
 /**
- * Google Apps Script to handle Onboarding Form submissions.
+ * Google Apps Script — Leapuzo Client Onboarding Form
  * 
- * Instructions:
- * 1. Open Google Sheets (create a new one or use your existing sheet).
+ * SETUP INSTRUCTIONS:
+ * 1. Open your Google Sheet (create a new one or use existing).
  * 2. Click Extensions > Apps Script.
- * 3. Delete any default code and paste this script.
- * 4. Replace the FOLDER_ID placeholder below with the ID of the Google Drive folder where you want files to be saved.
+ * 3. Delete any default code and paste this entire script.
+ * 4. Replace YOUR_GOOGLE_DRIVE_FOLDER_ID_HERE below with your Drive folder ID.
+ *    (Folder ID is the long string in the Drive folder URL after /folders/)
  * 5. Click Save (disk icon).
  * 6. Click Deploy > New Deployment.
- * 7. Choose type: Web App.
- *    - Execute As: Me (your-email)
+ * 7. Select type: Web App.
+ *    - Execute As: Me (your email)
  *    - Who has access: Anyone
- * 8. Click Deploy, authorize permissions, and copy the generated "Web app URL".
- * 9. Paste the Web app URL in your onboarding form's Javascript script URL variable.
+ * 8. Click Deploy, authorize permissions, copy the Web App URL.
+ * 9. Paste that URL in clientdetails/index.html wherever scriptURL is defined.
  */
 
-// Replace with the Google Drive folder ID where uploaded logos should be saved.
+// ─── CONFIG ────────────────────────────────────────────────────────────────
 const FOLDER_ID = "YOUR_GOOGLE_DRIVE_FOLDER_ID_HERE";
+// ────────────────────────────────────────────────────────────────────────────
 
+// All form headings in exact display order
+const HEADERS = [
+  "Timestamp",
+
+  // ── Company Details ──────────────────────────────────────────────────────
+  "Legal Name of the Company",
+  "Business Sector",
+  "Registered Business Address & Pincode",
+  "Corporate Business Address & Pincode",
+  "Constitution",
+  "GST No:",
+  "MSME (If applicable)",
+  "Company Pan Number",
+  "Official Contact Number",
+  "Official Email Address",
+  "Website URL(if available)",
+
+  // ── Primary Contact ──────────────────────────────────────────────────────
+  "Primary Contact Person Name",
+  "Primary Contact Person Designation",
+  "Primary Contact Person Number",
+  "Primary Contact Person Email ID",
+
+  // ── Secondary Contact ────────────────────────────────────────────────────
+  "Secondary Contact Person Name",
+  "Secondary Contact Person Designation",
+  "Secondary Contact Person Number",
+  "Secondary Contact Person Email ID",
+
+  // ── Business Overview ────────────────────────────────────────────────────
+  "Briefly describe your business.",
+  "What products or services do you offer? ",
+  "What are your primary business goals?",
+  "Long-term goals (3-5 years)",
+  "Who is your ideal customer?",
+  "What influences their purchase?",
+  "Why should they choose you?",
+  "What are your USP's?",
+  "Top 5 competitors",
+
+  // ── Social Media Credentials ─────────────────────────────────────────────
+  "Instagram Username / Email",
+  "instagramPassword",
+  "Facebook Username / Email",
+  "facebookPassword",
+  "YouTube Google Account Email",
+  "youtubePassword",
+  "LinkedIn Email",
+  "X Username / Email",
+  "xPassword",
+
+  // ── Domain ───────────────────────────────────────────────────────────────
+  "Domain Provider",
+  "Domain Login Email / Username",
+  "domainPassword",
+
+  // ── Agency Expectations ──────────────────────────────────────────────────
+  "What has frustrated you with previous agencies?",
+  "What do you definitely NOT want?",
+  "What type of design do you dislike?",
+  "What expectations do you have from us?",
+
+  // ── Uploaded Files ───────────────────────────────────────────────────────
+  "Company Logo Link",
+  "Brand Guidelines Link"
+];
+
+// ─── HELPER: Get or create Drive folder ─────────────────────────────────────
+function getFolder() {
+  try {
+    if (FOLDER_ID && FOLDER_ID !== "YOUR_GOOGLE_DRIVE_FOLDER_ID_HERE") {
+      return DriveApp.getFolderById(FOLDER_ID);
+    }
+  } catch (e) {}
+  return DriveApp.getRootFolder();
+}
+
+// ─── HELPER: Upload base64 file to Drive, return public URL ─────────────────
+function uploadFile(base64, fileName) {
+  if (!base64 || !fileName) return "";
+  const ext = fileName.toLowerCase().split(".").pop();
+  const mimeMap = {
+    pdf: "application/pdf",
+    jpg: "image/jpeg",
+    jpeg: "image/jpeg",
+    png: "image/png",
+    gif: "image/gif",
+    zip: "application/zip",
+    txt: "text/plain"
+  };
+  const contentType = mimeMap[ext] || "application/octet-stream";
+  const bytes = Utilities.base64Decode(base64);
+  const blob = Utilities.newBlob(bytes, contentType, fileName);
+  const file = getFolder().createFile(blob);
+  file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+  return file.getUrl();
+}
+
+// ─── MAIN POST HANDLER ───────────────────────────────────────────────────────
 function doPost(e) {
   try {
     const data = JSON.parse(e.postData.contents);
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-    
-    // 1. Create or Find Headers
-    let headers = sheet.getRange(1, 1, 1, sheet.getLastColumn() > 0 ? sheet.getLastColumn() : 1).getValues()[0];
-    if (headers[0] === "") {
-      // Setup default headers if sheet is empty
-      headers = [
-        "Timestamp",
-        "Legal Name of the Company",
-        "Business Sector",
-        "Registered Business Address & Pincode",
-        "Corporate Business Address & Pincode",
-        "Constitution",
-        "GST No:",
-        "MSME (If applicable)",
-        "Company Pan Number",
-        "Official Contact Number",
-        "Official Email Address",
-        "Website URL(if available)",
-        "Primary Contact Person Name",
-        "Primary Contact Person Designation",
-        "Primary Contact Person Number",
-        "Primary Contact Person Email ID",
-        "Secondary Contact Person Name",
-        "Secondary Contact Person Designation",
-        "Secondary Contact Person Number",
-        "Secondary Contact Person Email ID",
-        "Briefly describe your business.",
-        "What products or services do you offer? ",
-        "What are your primary business goals?",
-        "Company Logo Link",
-        "Brand Guidelines"
-      ];
-      sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
-    }
-    
-    // 2a. Handle Logo Upload to Google Drive if present
-    let logoUrl = "";
-    if (data.logoBase64 && data.logoFileName) {
-      let folder;
-      try {
-        if (FOLDER_ID && FOLDER_ID !== "YOUR_GOOGLE_DRIVE_FOLDER_ID_HERE" && FOLDER_ID !== "") {
-          folder = DriveApp.getFolderById(FOLDER_ID);
-        } else {
-          folder = DriveApp.getRootFolder();
-        }
-      } catch (err) {
-        folder = DriveApp.getRootFolder();
-      }
 
-      // Determine Content Type based on extension
-      let contentType = "image/png"; // default
-      const ext = data.logoFileName.toLowerCase().split('.').pop();
-      if (ext === "pdf") {
-        contentType = "application/pdf";
-      } else if (ext === "jpg" || ext === "jpeg") {
-        contentType = "image/jpeg";
-      }
+    // Write header row if sheet is blank
+    if (sheet.getLastColumn() === 0 || sheet.getRange(1, 1).getValue() === "") {
+      sheet.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
 
-      const bytes = Utilities.base64Decode(data.logoBase64);
-      const blob = Utilities.newBlob(bytes, contentType, data.logoFileName);
-      const file = folder.createFile(blob);
-      
-      // Make the file publicly viewable so it can be opened from the sheet link
-      file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-      logoUrl = file.getUrl();
+      // Style the header row: bold, frozen, purple background, white text
+      const headerRange = sheet.getRange(1, 1, 1, HEADERS.length);
+      headerRange.setFontWeight("bold");
+      headerRange.setBackground("#971dcc");
+      headerRange.setFontColor("#ffffff");
+      headerRange.setHorizontalAlignment("center");
+      sheet.setFrozenRows(1);
+      sheet.setColumnWidths(1, HEADERS.length, 200);
     }
 
-    // 2b. Handle Brand Guidelines Upload to Google Drive if present
-    let brandUrl = "";
-    if (data.brandBase64 && data.brandFileName) {
-      let folder;
-      try {
-        if (FOLDER_ID && FOLDER_ID !== "YOUR_GOOGLE_DRIVE_FOLDER_ID_HERE" && FOLDER_ID !== "") {
-          folder = DriveApp.getFolderById(FOLDER_ID);
-        } else {
-          folder = DriveApp.getRootFolder();
-        }
-      } catch (err) {
-        folder = DriveApp.getRootFolder();
-      }
+    // Upload files and get Drive URLs
+    const logoUrl  = uploadFile(data.logoBase64,  data.logoFileName);
+    const brandUrl = uploadFile(data.brandBase64, data.brandFileName);
 
-      // Determine Content Type based on extension
-      let contentType = "application/octet-stream"; // default
-      const ext = data.brandFileName.toLowerCase().split('.').pop();
-      if (ext === "pdf") {
-        contentType = "application/pdf";
-      } else if (ext === "zip") {
-        contentType = "application/zip";
-      } else if (ext === "png") {
-        contentType = "image/png";
-      } else if (ext === "jpg" || ext === "jpeg") {
-        contentType = "image/jpeg";
-      } else if (ext === "txt") {
-        contentType = "text/plain";
-      }
+    // Map data to header order
+    const row = HEADERS.map(header => {
+      if (header === "Timestamp")          return new Date();
+      if (header === "Company Logo Link")  return logoUrl;
+      if (header === "Brand Guidelines Link") return brandUrl;
 
-      const bytes = Utilities.base64Decode(data.brandBase64);
-      const blob = Utilities.newBlob(bytes, contentType, data.brandFileName);
-      const file = folder.createFile(blob);
-      
-      file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
-      brandUrl = file.getUrl();
-    }
-    
-    // 3. Map submission fields to headers
-    const rowValues = [];
-    const timestamp = new Date();
-    
-    headers.forEach(header => {
-      if (header === "Timestamp") {
-        rowValues.push(timestamp);
-      } else if (header === "Company Logo Link" || header === "Upload your primary company logo. (High Quality)") {
-        rowValues.push(logoUrl);
-      } else if (header === "Brand Guidelines") {
-        rowValues.push(brandUrl || data[header] || "");
-      } else {
-        // Match the data fields sent from form
-        const val = data[header] || "";
-        rowValues.push(val);
-      }
+      // Handle HTML entity in field name (& was stored as &amp; in HTML)
+      const decoded = header.replace(/&amp;/g, "&");
+      return data[header] || data[decoded] || "";
     });
-    
-    // 4. Append to spreadsheet
-    sheet.appendRow(rowValues);
-    
-    return ContentService.createTextOutput(JSON.stringify({
-      status: "success",
-      logoUrl: logoUrl
-    })).setMimeType(ContentService.MimeType.JSON);
-    
-  } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({
-      status: "error",
-      message: error.toString()
-    })).setMimeType(ContentService.MimeType.JSON);
+
+    sheet.appendRow(row);
+
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: "success", logoUrl }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  } catch (err) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ status: "error", message: err.toString() }))
+      .setMimeType(ContentService.MimeType.JSON);
   }
+}
+
+// ─── TEST FUNCTION (run manually from Apps Script editor to verify) ──────────
+function testSetup() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  Logger.log("Sheet name: " + sheet.getName());
+  Logger.log("Active spreadsheet: " + SpreadsheetApp.getActiveSpreadsheet().getName());
+  Logger.log("Drive folder accessible: " + getFolder().getName());
+  Logger.log("Headers count: " + HEADERS.length);
+  Logger.log("Setup looks correct.");
 }
