@@ -101,7 +101,11 @@
     form div.framer-form-input-wrapper input[type="file"] {
         line-height: 48px !important;
         color: #d6d1ce !important;
-        padding: 8px 0 !important;
+        padding: 8px 42px 8px 0 !important;
+        box-sizing: border-box !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
     }
     /* Specific adjustments for date picker fields and Safari inner edit blocks */
     form div.framer-form-input-wrapper input[type="date"] {
@@ -128,6 +132,35 @@
     /* Give select elements padding on the right to not overlap with custom arrow */
     form div.framer-form-input-wrapper select {
         padding-right: 24px !important;
+    }
+    /* Normalize IFSC Code, UPI ID, and Cancelled Cheque fields to match other flex-based fields */
+    label.framer-15mziws,
+    label.framer-1dj4p6s {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: min-content !important;
+        gap: 8px !important;
+        position: relative !important;
+    }
+    div.framer-1oqscbk,
+    div.framer-1q673aq {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        white-space: pre-wrap !important;
+        flex: none !important;
+        width: auto !important;
+        height: auto !important;
+    }
+    div.framer-1yibecd,
+    div.framer-ucd3n2 {
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        flex: none !important;
+        width: 100% !important;
     }
     </style>
     <!-- End of headStart -->
