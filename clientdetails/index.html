@@ -545,12 +545,98 @@
 	
 
     <style id="leapuzo-client-custom-fixes">
-
     /* ==========================================================================
-       COMPREHENSIVE MOBILE LAYOUT RECTIFICATION (max-width: 810px)
+       PERFECT MOBILE LAYOUT RECTIFICATION (max-width: 810px)
+       Resolves all 6 visual misalignments reported in user screenshots
        ========================================================================== */
     @media (max-width: 810px) {
-      /* 1. Prevent viewport overflow & horizontal scrolling */
+      /* BUG 1 FIX: Hero Heading Overlap ("Your leap starts here") */
+      .framer-9ebtwc,
+      .framer-msgo5u,
+      .framer-1yj7jpl,
+      .framer-i7i8xn {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 0 12px 0 !important;
+        padding: 0 12px !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+      }
+
+      .framer-msgo5u p,
+      .framer-1yj7jpl p,
+      .framer-i7i8xn p,
+      .framer-msgo5u span,
+      .framer-1yj7jpl span {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 26px !important;
+        line-height: 1.25 !important;
+        font-weight: 700 !important;
+        margin: 0 0 8px 0 !important;
+        display: block !important;
+        text-align: center !important;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+      }
+
+      /* BUG 2 FIX: Form Banner Title Overflow ("Client Onboarding Form") */
+      .framer-1ol9gzi,
+      .framer-hznj3m,
+      #wizard-section-title,
+      .contact-section-heading {
+        font-family: 'Inter', sans-serif !important;
+        font-size: 22px !important;
+        line-height: 1.3 !important;
+        font-weight: 700 !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase !important;
+        color: #FFFFFF !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        word-wrap: break-word !important;
+        margin: 16px auto 16px auto !important;
+        padding: 0 12px !important;
+        display: block !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+      }
+
+      /* BUG 3 FIX: Wizard Stepper Progress Bar Mobile Alignment */
+      #wizard-stepper-root {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 0 20px 0 !important;
+        padding: 0 10px !important;
+      }
+
+      /* Hide overlapping sub-caption texts under the circles on small mobile screens */
+      .progress-step-title,
+      .progress-step-sub {
+        display: none !important;
+      }
+
+      .progress-step-circle {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 14px !important;
+      }
+
+      /* BUG 4 & 5 FIX: Form Card, Labels, and Input Box Uniformity */
       html, body, #main, [data-framer-root], .framer-fAmuS, .framer-YFSWa {
         width: 100% !important;
         max-width: 100vw !important;
@@ -563,18 +649,18 @@
         max-width: 100% !important;
         height: auto !important;
         min-height: auto !important;
-        padding: 16px 12px 60px 12px !important;
+        padding: 12px 10px 60px 10px !important;
         box-sizing: border-box !important;
+        position: relative !important;
       }
 
-      /* 2. Main Form Card (#begin & .framer-1yvis3z) */
       #begin,
       .framer-1yvis3z {
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
         box-sizing: border-box !important;
-        padding: 20px 16px !important;
+        padding: 20px 14px !important;
         margin: 0 auto 24px auto !important;
         display: flex !important;
         flex-direction: column !important;
@@ -588,7 +674,7 @@
         border-radius: 16px !important;
       }
 
-      /* 3. Label Containers — uniform vertical stack */
+      /* Label containers reset to vertical flex stack */
       #begin label,
       .framer-1yvis3z label,
       label[data-step] {
@@ -612,7 +698,7 @@
         box-sizing: border-box !important;
       }
 
-      /* Reset Framer inner label wrapper divs */
+      /* Label inner wrapper divs reset */
       #begin label > div,
       #begin label .ssr-variant,
       #begin label .framer-iq7pyu,
@@ -628,7 +714,7 @@
         display: block !important;
       }
 
-      /* 4. Uniform Label Typography on Mobile */
+      /* Uniform Label Typography (No clipping of ampersands or long address titles) */
       #begin label p,
       #begin label span,
       #begin label .framer-text {
@@ -641,9 +727,14 @@
         padding: 0 !important;
         display: block !important;
         text-align: left !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        word-wrap: break-word !important;
+        overflow: visible !important;
+        text-overflow: clip !important;
       }
 
-      /* 5. Uniform Input Box Sizes & Alignment */
+      /* Uniform Input Boxes */
       #begin .framer-form-text-input,
       #begin .framer-form-input-wrapper,
       #begin .framer-form-select-wrapper,
@@ -671,7 +762,7 @@
         padding: 0 16px !important;
       }
 
-      /* Upload inputs — maintain purple upload icon on far right */
+      /* File upload visible text inputs — maintain upload icon on far right end */
       #begin input[name*="Upload" i],
       #begin input[name*="logo" i],
       #begin input[name*="Logo" i],
@@ -682,22 +773,58 @@
         background-size: 18px !important;
       }
 
-      /* 6. Section Headings & Titles on Mobile */
-      .framer-1ol9gzi,
-      #wizard-section-title,
-      .contact-section-heading {
-        font-family: 'Inter', sans-serif !important;
-        font-size: 16px !important;
-        font-weight: 700 !important;
-        letter-spacing: 0.06em !important;
-        text-transform: uppercase !important;
-        color: #971dcc !important;
-        text-align: left !important;
-        width: 100% !important;
-        margin: 20px 0 12px 0 !important;
-        display: block !important;
+      /* BUG 6 FIX: Footer Misalignment & Floating START Button Removal */
+      .framer-ytztka-container,
+      .framer-Zzrq8,
+      a[href*="START"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
       }
-    }
+
+      .framer-lrmfcq,
+      .framer-11s640i,
+      .framer-1crry6v,
+      footer {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 12px !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding: 40px 16px !important;
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+      }
+
+      .framer-1znye5,
+      .framer-3zdvvs,
+      .framer-allinfo,
+      .framer-i26irx,
+      .framer-xvjj9p,
+      .framer-1y01llr {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        transform: none !important;
+        width: auto !important;
+        height: auto !important;
+        margin: 4px 0 !important;
+        text-align: center !important;
+      }
+
+      .framer-3zdvvs {
+        margin-bottom: 12px !important;
+      }
 
       /* Hide Framer "Made with Framer" badge completely */
       #__framer-badge-container,
@@ -712,40 +839,8 @@
         height: 0 !important;
         overflow: hidden !important;
       }
-
-      /* Upload icon on far right end for file upload inputs (Logo & Brand Guidelines) */
-      #begin input[name*="Upload" i],
-      #begin input[name*="logo" i],
-      #begin input[name*="Logo" i],
-      #begin input[name*="Brand" i],
-      #begin input[name*="guideline" i],
-      #begin input[type="file"],
-      .framer-1cik6jj input,
-      .framer-1yfg1o input,
-      input[type="file"].framer-form-input {
-        color: #ffffff !important;
-        cursor: pointer !important;
-        padding-right: 48px !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23971dcc' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5'/%3E%3C/svg%3E") !important;
-        background-repeat: no-repeat !important;
-        background-position: right 14px center !important;
-        background-size: 20px !important;
-        background-color: rgba(0, 0, 0, 0.15) !important;
-      }
-
-      #begin input[type="file"]::file-selector-button,
-      input[type="file"].framer-form-input::file-selector-button {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        border: none !important;
-      }
-    </style>
+    }
+</style>
     
 </head>
 <body>
