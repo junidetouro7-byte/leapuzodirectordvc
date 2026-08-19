@@ -252,14 +252,13 @@
     display: inline-block !important;
   }
 
-  /* Natural Hero Section Rendering */
+  /* Hide original Framer hero image — replaced by custom hero-bg.png via #leapuzo-hero-bg */
   img[src*="FKFEvw9R5j6UIbUYskapgSQJByc"],
+  img[srcset*="FKFEvw9R5j6UIbUYskapgSQJByc"],
   .framer-9ebtwc [data-framer-background-image-wrapper="true"] {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    mask-image: none !important;
-    -webkit-mask-image: none !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
   }
 
   /* Unobstructed Footer Section */
@@ -662,7 +661,7 @@
       height: 100vh !important;
       max-width: 900px !important;
       pointer-events: none !important;
-      z-index: -2 !important;
+      z-index: 1 !important;
       background-image: url('/clientdetails/hero-bg.png') !important;
       background-size: cover !important;
       background-position: center right !important;
