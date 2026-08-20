@@ -2891,6 +2891,25 @@ form#begin {
   visibility: visible !important;
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   FIX DUPLICATE LABELS - PRESERVE FRAMER SSR RESPONSIVE VARIANT HIDING
+   ------------------------------------------------------------------------ */
+@media (min-width: 810px) {
+  .hidden-1lg1qtq,
+  .hidden-72rtr7,
+  .ssr-variant.hidden-1lg1qtq,
+  .ssr-variant.hidden-72rtr7 {
+    display: none !important;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .hidden-2wk8na,
+  .ssr-variant.hidden-2wk8na {
+    display: none !important;
+  }
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
