@@ -1483,6 +1483,84 @@ footer::before,
   }
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   PERFECT MOBILE PROGRESS STEPPER ALIGNMENT (NO OVERLAPS)
+   ------------------------------------------------------------------------ */
+@media (max-width: 809.98px) {
+  #wizard-stepper-root {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 auto 20px auto !important;
+    padding: 0 4px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    position: relative !important;
+  }
+
+  .progress-track-bg,
+  .progress-track-fill {
+    top: 16px !important;
+  }
+
+  .progress-step {
+    flex: 1 1 0% !important;
+    min-width: 0 !important; /* CRITICAL: prevents flex overflow */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: center !important;
+    gap: 4px !important;
+    padding: 0 2px !important;
+    box-sizing: border-box !important;
+  }
+
+  .step-num {
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 30px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+  }
+
+  .step-label {
+    font-size: 9px !important;
+    font-weight: 600 !important;
+    line-height: 1.15em !important;
+    letter-spacing: 0px !important; /* Removes 1px letter spacing overflow */
+    text-transform: uppercase !important;
+    text-align: center !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    width: 100% !important;
+    max-width: 64px !important;
+    margin-top: 4px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Form Title Heading spacing */
+  #wizard-section-title,
+  .framer-1ol9gzi p {
+    font-size: 22px !important;
+    line-height: 1.3em !important;
+    text-align: center !important;
+    margin-bottom: 16px !important;
+  }
+}
+</style></style>
 </head>
 <body>
 
