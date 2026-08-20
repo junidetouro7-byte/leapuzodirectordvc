@@ -1,0 +1,5 @@
+`
+    /* Hide default Framer submit button container */
+    #begin > .ssr-variant:last-of-type,
+    #begin button:not(.wizard-btn) {
+      display: none !important
