@@ -2842,6 +2842,36 @@ div:has(> a[href*="framer.com"]) {
   }
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   DISABLE ALL HERO & FORM LAYOUT SHIFT / ENTRANCE POP ANIMATIONS ON LOAD
+   ------------------------------------------------------------------------ */
+#main,
+#main *,
+.framer-wr2ci8,
+.framer-wr2ci8 *,
+.framer-1ol9gzi,
+.framer-1ol9gzi *,
+#begin,
+#begin *,
+.framer-body-au755g,
+.framer-body-au755g * {
+  animation: none !important;
+  transition: none !important;
+  will-change: auto !important;
+  opacity: 1 !important;
+}
+
+/* Force hero title, form card, and background to render static & instant at final coordinates */
+#main > div,
+.framer-wr2ci8,
+#begin,
+.framer-1ol9gzi-container,
+.framer-1ol9gzi {
+  transform: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
