@@ -2753,6 +2753,56 @@ footer * {
   transition: none !important;
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   1. HIDE DUPLICATE FRAMER SSR RESPONSIVE LABEL VARIANTS
+   ------------------------------------------------------------------------ */
+@media (min-width: 1200px) {
+  .hidden-2wk8na,
+  .hidden-1lg1qtq {
+    display: none !important;
+  }
+}
+
+@media (min-width: 810px) and (max-width: 1199.98px) {
+  .hidden-72rtr7,
+  .hidden-2wk8na {
+    display: none !important;
+  }
+}
+
+@media (max-width: 809.98px) {
+  .hidden-1lg1qtq,
+  .hidden-72rtr7 {
+    display: none !important;
+  }
+}
+
+/* Ensure only one label text container is displayed inside any label */
+form#begin label .ssr-variant:nth-of-type(n+2) {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------------------
+   2. PERFECT DESKTOP FORM POSITION & CLEARANCE (NO OVERLAP)
+   ------------------------------------------------------------------------ */
+@media (min-width: 810px) {
+  .framer-1ol9gzi-container {
+    position: relative !important;
+    margin-top: 40px !important;
+    margin-bottom: 35px !important;
+  }
+
+  .framer-1y1imds-container,
+  form#begin {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    margin-top: 0 !important;
+    margin-bottom: 60px !important;
+  }
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
