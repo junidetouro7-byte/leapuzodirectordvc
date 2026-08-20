@@ -5092,8 +5092,8 @@ div[data-framer-name="Desktop"],
       if (input.dataset.phoneValidationInitialized) return;
       input.dataset.phoneValidationInitialized = 'true';
 
-      input.setAttribute('maxlength', '10');
-      input.setAttribute('inputmode', 'numeric');
+      input.setAttribute('maxlength', '16');
+      input.setAttribute('inputmode', 'tel');
 
       let errorEl = label.querySelector('.phone-validation-error');
       if (!errorEl) {
@@ -5112,16 +5112,10 @@ div[data-framer-name="Desktop"],
       const getWrapper = () => label.querySelector('.framer-form-input-wrapper, .framer-form-text-input-wrapper') || input.parentElement;
 
       const validate = (checkLength = false) => {
-        let val = input.value;
-        const cleaned = val.replace(/\D/g, '');
-        if (val !== cleaned) {
-          input.value = cleaned;
-          val = cleaned;
-        }
-
+        let rawVal = input.value.trim();
         const wrapper = getWrapper();
 
-        if (val.length === 0) {
+        if (rawVal.length === 0) {
           errorEl.style.display = 'none';
           errorEl.textContent = '';
           if (wrapper) {
@@ -5131,22 +5125,45 @@ div[data-framer-name="Desktop"],
           return true;
         }
 
-        const firstDigit = val[0];
-        // Rule 4: First digit must be 6, 7, 8, or 9
-        if (!['6', '7', '8', '9'].includes(firstDigit)) {
-          errorEl.textContent = 'Invalid mobile number. It must start with 6, 7, 8, or 9.';
-          errorEl.style.display = 'block';
-          if (wrapper) {
-            wrapper.style.borderColor = '#ef4444';
-            wrapper.style.boxShadow = '0 0 8px rgba(239, 68, 68, 0.4)';
+        // Clean digits and extract subscriber part after country code +91 if present
+        const hasPlus91 = rawVal.startsWith('+91') || rawVal.startsWith('+ 91');
+        let cleanDigits = rawVal.replace(/[^0-9]/g, '');
+
+        let subscriberDigits = cleanDigits;
+        if (hasPlus91 || (cleanDigits.length > 10 && cleanDigits.startsWith('91'))) {
+          if (cleanDigits.startsWith('91')) {
+            subscriberDigits = cleanDigits.slice(2);
           }
-          return false;
         }
 
-        // Rule 5: 10-digit length check
-        if (val.length < 10) {
+        // Limit subscriber part to 10 digits
+        if (subscriberDigits.length > 10) {
+          subscriberDigits = subscriberDigits.slice(0, 10);
+          if (hasPlus91) {
+            input.value = '+91 ' + subscriberDigits;
+          } else {
+            input.value = subscriberDigits;
+          }
+        }
+
+        if (subscriberDigits.length > 0) {
+          const firstDigit = subscriberDigits[0];
+          if (!['6', '7', '8', '9'].includes(firstDigit)) {
+            errorEl.textContent = 'Mobile number must start with 6, 7, 8, or 9.';
+            errorEl.style.display = 'block';
+            if (wrapper) {
+              wrapper.style.borderColor = '#ef4444';
+              wrapper.style.boxShadow = '0 0 8px rgba(239, 68, 68, 0.4)';
+            }
+            return false;
+          }
+        }
+
+        if (subscriberDigits.length < 10) {
           if (checkLength) {
-            errorEl.textContent = 'Please enter a valid 10-digit mobile number.';
+            errorEl.textContent = hasPlus91 
+              ? 'Please enter exactly 10 digits after +91.' 
+              : 'Please enter a valid 10-digit mobile number starting with 6-9.';
             errorEl.style.display = 'block';
             if (wrapper) {
               wrapper.style.borderColor = '#ef4444';
@@ -5162,8 +5179,8 @@ div[data-framer-name="Desktop"],
           return false;
         }
 
-        // Rule 7: Remove error automatically once valid 10-digit number entered
-        if (val.length === 10 && ['6', '7', '8', '9'].includes(firstDigit)) {
+        // Valid 10 digits starting with 6, 7, 8, or 9
+        if (subscriberDigits.length === 10 && ['6', '7', '8', '9'].includes(subscriberDigits[0])) {
           errorEl.style.display = 'none';
           errorEl.textContent = '';
           if (wrapper) {
@@ -5180,12 +5197,12 @@ div[data-framer-name="Desktop"],
 
       input.addEventListener('input', () => validate(false));
       input.addEventListener('blur', () => {
-        if (input.value.length > 0 && input.value.length < 10) {
+        if (input.value.length > 0) {
           validate(true);
         }
       });
       input.addEventListener('keydown', (e) => {
-        const allowedKeys = ['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'Home', 'End'];
+        const allowedKeys = ['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'Home', 'End', '+', ' '];
         if (!allowedKeys.includes(e.key) && e.key.length === 1 && !/\d/.test(e.key) && !e.ctrlKey && !e.metaKey) {
           e.preventDefault();
         }
@@ -6598,6 +6615,137 @@ div[data-framer-name="Desktop"],
 }
 </style>
 
+<script>
+/* ------------------------------------------------------------------------
+   INDIAN MOBILE NUMBER VALIDATION (6-9 STARTING DIGIT, EXACTLY 10 DIGITS)
+   ------------------------------------------------------------------------ */
+(function initPhoneValidation() {
+  function isValidIndianMobile(value) {
+    if (!value) return false;
+    const cleanVal = value.trim().replace(/\s+/g, '');
+    // Regex: Optional +91 prefix followed by exactly 10 digits starting with 6, 7, 8, or 9
+    const regex = /^(?:\+?91)?([6-9]\d{9})$/;
+    return regex.test(cleanVal);
+  }
+
+  function formatPhoneInput(input) {
+    let val = input.value;
+    
+    // Allow + at start if present
+    const hasPlus = val.startsWith('+');
+    let digitsOnly = val.replace(/\D/g, '');
+    
+    // Handle +91 prefix
+    if (hasPlus || digitsOnly.startsWith('91')) {
+      if (digitsOnly.startsWith('91')) {
+        const subscriberDigits = digitsOnly.slice(2, 12);
+        input.value = '+91 ' + subscriberDigits;
+      } else {
+        const subscriberDigits = digitsOnly.slice(0, 10);
+        input.value = subscriberDigits ? '+91 ' + subscriberDigits : '+91 ';
+      }
+    } else {
+      // Limit raw digits to 10 max
+      input.value = digitsOnly.slice(0, 10);
+    }
+  }
+
+  function validatePhoneField(input, showMsg = true) {
+    const rawVal = input.value.trim();
+    let errorEl = input.parentNode.querySelector('.phone-validation-error-msg');
+    
+    if (!errorEl) {
+      errorEl = document.createElement('div');
+      errorEl.className = 'phone-validation-error-msg';
+      errorEl.style.cssText = 'color: #f87171 !important; font-size: 12px !important; font-weight: 500 !important; margin-top: 6px !important; display: none; font-family: Inter, sans-serif !important;';
+      input.parentNode.appendChild(errorEl);
+    }
+
+    if (!rawVal) {
+      if (input.hasAttribute('required')) {
+        errorEl.textContent = 'Phone number is required.';
+        if (showMsg) errorEl.style.display = 'block';
+        input.style.setProperty('border-color', '#ef4444', 'important');
+        return false;
+      } else {
+        errorEl.style.display = 'none';
+        input.style.setProperty('border-color', '', '');
+        return true;
+      }
+    }
+
+    const isValid = isValidIndianMobile(rawVal);
+    if (!isValid) {
+      const cleanDigits = rawVal.replace(/\D/g, '');
+      const subscriberPart = rawVal.startsWith('+91') ? cleanDigits.slice(2) : cleanDigits;
+      
+      if (subscriberPart.length > 0 && !['6', '7', '8', '9'].includes(subscriberPart[0])) {
+        errorEl.textContent = 'Mobile number must start with 6, 7, 8, or 9.';
+      } else if (subscriberPart.length !== 10) {
+        errorEl.textContent = `Must contain exactly 10 digits (currently ${subscriberPart.length}).`;
+      } else {
+        errorEl.textContent = 'Invalid mobile number format. Must start with 6-9 and be 10 digits.';
+      }
+      
+      if (showMsg) errorEl.style.display = 'block';
+      input.style.setProperty('border-color', '#ef4444', 'important');
+      return false;
+    } else {
+      errorEl.style.display = 'none';
+      input.style.setProperty('border-color', '#22c55e', 'important');
+      return true;
+    }
+  }
+
+  function attachPhoneValidation() {
+    const phoneInputs = document.querySelectorAll('input[type="tel"], input[name*="Contact"], input[name*="Number"]');
+    phoneInputs.forEach(input => {
+      // Exclude PAN or address fields
+      if (input.name && (input.name.includes('Pan') || input.name.includes('Address'))) return;
+
+      if (!input.dataset.phoneValidationAttached) {
+        input.dataset.phoneValidationAttached = "true";
+        input.setAttribute('maxlength', '15');
+        
+        input.addEventListener('input', function() {
+          formatPhoneInput(this);
+          validatePhoneField(this, true);
+        });
+
+        input.addEventListener('blur', function() {
+          validatePhoneField(this, true);
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', attachPhoneValidation);
+  setInterval(attachPhoneValidation, 1000);
+
+  // Expose global window helper for form step submission
+  window.validateAllPhoneFields = function(container) {
+    const scope = container || document;
+    const phoneInputs = scope.querySelectorAll('input[type="tel"], input[name*="Contact Number"], input[name*="Person Number"]');
+    let allValid = true;
+    let firstInvalid = null;
+
+    phoneInputs.forEach(input => {
+      const valid = validatePhoneField(input, true);
+      if (!valid && allValid) {
+        allValid = false;
+        firstInvalid = input;
+      }
+    });
+
+    if (firstInvalid) {
+      firstInvalid.focus();
+      firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    return allValid;
+  };
+})();
+</script>
 </body>
 
 <!-- Mirrored from leapuzoclientform.framer.website/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Aug 2026 12:11:20 GMT -->
