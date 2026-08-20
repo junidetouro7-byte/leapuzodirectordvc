@@ -1538,6 +1538,78 @@
   }
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   ELIMINATE TOP BAR GAP & COVER TOP EDGE WITH HERO ARTWORK
+   ------------------------------------------------------------------------ */
+html,
+body,
+#main,
+.framer-body-au755g {
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0 !important;
+}
+
+@media (max-width: 809.98px) {
+  /* Position top-middle logo cleanly near top edge (top: 16px) */
+  #leapuzo-mobile-hero-logo {
+    position: absolute !important;
+    top: 16px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .leapuzo-mobile-hero-logo-img {
+    height: 64px !important;
+    max-height: 75px !important;
+    width: auto !important;
+    max-width: 320px !important;
+    display: block !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    filter: drop-shadow(0 0 20px rgba(151, 29, 204, 0.95)) drop-shadow(0 3px 10px rgba(0, 0, 0, 0.95)) !important;
+  }
+
+  /* Force Hero section container to start at 0px top edge with 0 margin */
+  .framer-wr2ci8,
+  [data-framer-name="About"],
+  .framer-9ebtwc,
+  [data-framer-name="Hero"] {
+    margin-top: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    padding-top: 90px !important;
+    padding-bottom: 30px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-image: url('mobile_hero_bg.png?v=5') !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+  }
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
