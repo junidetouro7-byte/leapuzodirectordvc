@@ -2729,6 +2729,32 @@ div[data-framer-name="Desktop"],
   }
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   FIX INPUT TEXT BOTTOM ALIGNMENT - PERFECT VERTICAL CENTER ALIGNMENT
+   ------------------------------------------------------------------------ */
+#begin input[type="text"],
+#begin input[type="tel"],
+#begin input[type="email"],
+#begin input[type="password"],
+#begin input[type="url"],
+#begin select,
+.step-element input,
+.framer-form-text-input-wrapper input,
+.framer-form-input-wrapper input,
+.framer-form-input,
+#wizard-step3-fields input,
+#wizard-step4-fields input {
+  display: block !important;
+  height: 50px !important;
+  min-height: 50px !important;
+  max-height: 50px !important;
+  line-height: 24px !important; /* Prevents text from being pushed to bottom border */
+  padding: 12px 16px !important; /* Equal top & bottom padding centers text vertically */
+  box-sizing: border-box !important;
+  vertical-align: middle !important;
+  margin: 0 !important;
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
