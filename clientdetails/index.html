@@ -1640,24 +1640,47 @@ footer::before,
 }
 </style></style>
 <style>/* ------------------------------------------------------------------------
-   SINGLE FOOTER PER BREAKPOINT FIX (PREVENT DOUBLE FOOTER ON DESKTOP)
+   PERMANENT SECOND FOOTER ELIMINATION (DESKTOP & MOBILE)
    ------------------------------------------------------------------------ */
 
-/* 1. DESKTOP & TABLET (min-width: 810px): HIDE MOBILE FOOTER (.framer-lrmfcq) */
+/* ALWAYS HIDE TABLET FOOTER VARIANT (footer[data-framer-name="Tablet"] / .framer-v-5n2zug) */
+footer[data-framer-name="Tablet"],
+.framer-v-5n2zug,
+.framer-PYzaz.framer-v-5n2zug {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  top: -9999px !important;
+}
+
+/* DESKTOP (min-width: 810px): DISPLAY ONLY DESKTOP FOOTER (footer[data-framer-name="Desktop"]) */
 @media (min-width: 810px) {
-  .framer-lrmfcq {
+  /* HIDE MOBILE FOOTER (.framer-lrmfcq) ON DESKTOP */
+  .framer-lrmfcq,
+  [data-framer-name="Bottomblock"]:not(footer [data-framer-name="Bottomblock"]) {
     display: none !important;
     visibility: hidden !important;
+    opacity: 0 !important;
     height: 0 !important;
     min-height: 0 !important;
+    max-height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
     pointer-events: none !important;
     position: absolute !important;
+    top: -9999px !important;
   }
 
-  /* Show only Desktop Footer */
+  /* SHOW ONLY ONE DESKTOP FOOTER */
   footer[data-framer-name="Desktop"],
   .framer-PYzaz.framer-v-1uy2d1 {
     display: flex !important;
@@ -1666,15 +1689,12 @@ footer::before,
     position: relative !important;
     z-index: 10 !important;
     background: transparent !important;
-  }
-
-  /* Hide Tablet Footer on Desktop */
-  footer[data-framer-name="Tablet"] {
-    display: none !important;
+    background-color: transparent !important;
+    margin: 0 !important;
   }
 }
 
-/* 2. MOBILE (max-width: 809.98px): HIDE DESKTOP & TABLET FOOTER TAGS */
+/* MOBILE (max-width: 809.98px): DISPLAY ONLY MOBILE FOOTER (.framer-lrmfcq) */
 @media (max-width: 809.98px) {
   footer,
   .framer-PYzaz,
@@ -1682,13 +1702,16 @@ footer::before,
   [data-framer-name="Tablet"] {
     display: none !important;
     visibility: hidden !important;
+    opacity: 0 !important;
     height: 0 !important;
     min-height: 0 !important;
+    max-height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
     pointer-events: none !important;
     position: absolute !important;
+    top: -9999px !important;
   }
 
   .framer-lrmfcq {
@@ -1696,6 +1719,8 @@ footer::before,
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+    width: 100% !important;
+    position: relative !important;
   }
 }
 </style></style>
