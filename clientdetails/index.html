@@ -5208,15 +5208,22 @@ div[data-framer-name="Desktop"],
   }
 
   function setupPhoneFieldValidation() {
+    const targetNames = [
+      'official contact number',
+      'primary contact person number',
+      'secondary contact person number'
+    ];
+
     const inputs = document.querySelectorAll('#begin input');
     inputs.forEach(input => {
-      if (!isStrictPhoneField(input)) {
-        // Ensure non-phone fields are clean of phone validation
-        delete input.validatePhoneField;
-        delete input.dataset.phoneValidationInitialized;
-        const label = input.closest('label') || input.parentElement;
-        const oldErr = label.querySelector('.phone-validation-error');
-        if (oldErr) oldErr.remove();
+      const name = (input.name || '').toLowerCase().trim();
+
+      // Check if input is one of the target phone fields
+      const isTarget = targetNames.some(tn => name === tn || name.includes(tn));
+      if (!isTarget && input.type !== 'tel') return;
+
+      // Explicitly exclude name, designation, email, address, pan fields
+      if (name.includes('name') || name.includes('designation') || name.includes('email') || name.includes('address') || name.includes('pan')) {
         return;
       }
 
@@ -5257,23 +5264,25 @@ div[data-framer-name="Desktop"],
           return true;
         }
 
-        const hasPlus91 = rawVal.startsWith('+91') || rawVal.startsWith('+ 91');
-        let cleanDigits = rawVal.replace(/[^0-9]/g, '');
+        const hasPlus91 = rawVal.startsWith('+91') || rawVal.startsWith('+ 91') || rawVal.startsWith('+');
+        let digitsOnly = rawVal.replace(/[^0-9]/g, '');
 
-        let subscriberDigits = cleanDigits;
-        if (hasPlus91 || (cleanDigits.length > 10 && cleanDigits.startsWith('91'))) {
-          if (cleanDigits.startsWith('91')) {
-            subscriberDigits = cleanDigits.slice(2);
+        let subscriberDigits = digitsOnly;
+        if (hasPlus91 || (digitsOnly.length > 10 && digitsOnly.startsWith('91'))) {
+          if (digitsOnly.startsWith('91')) {
+            subscriberDigits = digitsOnly.slice(2);
           }
         }
 
         if (subscriberDigits.length > 10) {
           subscriberDigits = subscriberDigits.slice(0, 10);
-          if (hasPlus91) {
-            input.value = '+91 ' + subscriberDigits;
-          } else {
-            input.value = subscriberDigits;
-          }
+        }
+
+        // Smooth formatting without input locking
+        if (hasPlus91) {
+          input.value = '+91 ' + subscriberDigits;
+        } else {
+          input.value = subscriberDigits;
         }
 
         if (subscriberDigits.length > 0) {
@@ -5328,12 +5337,6 @@ div[data-framer-name="Desktop"],
       input.addEventListener('blur', () => {
         if (input.value.length > 0) {
           validate(true);
-        }
-      });
-      input.addEventListener('keydown', (e) => {
-        const allowedKeys = ['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'Home', 'End', '+', ' '];
-        if (!allowedKeys.includes(e.key) && e.key.length === 1 && !/\\d/.test(e.key) && !e.ctrlKey && !e.metaKey) {
-          e.preventDefault();
         }
       });
     });
