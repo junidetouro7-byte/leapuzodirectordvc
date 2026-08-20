@@ -2620,6 +2620,115 @@ div[data-framer-name="Desktop"],
   }
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   FIX MOBILE CONFIRMATION POP-UP MODAL SUBMIT BUTTON CUT-OFF
+   ------------------------------------------------------------------------ */
+#wizard-step3-modal-overlay,
+#wizard-confirm-modal-overlay,
+#wizard-success-modal-overlay,
+#wizard-modal-overlay {
+  padding: 12px 10px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#wizard-step3-modal-overlay > div,
+#wizard-confirm-modal-overlay > div,
+#wizard-success-modal-overlay > div {
+  width: 95% !important;
+  max-width: 450px !important;
+  max-height: 92vh !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  border-radius: 18px !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7) !important;
+}
+
+#wizard-step3-modal-footer,
+.wizard-modal-footer {
+  padding: 12px 14px 16px 14px !important; /* CRITICAL: Bottom padding prevents bottom/right cut-off */
+  box-sizing: border-box !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  background: #ffffff !important;
+  border-bottom-left-radius: 18px !important;
+  border-bottom-right-radius: 18px !important;
+  flex-shrink: 0 !important;
+}
+
+#step3-back-btn {
+  flex: 0 0 35% !important;
+  max-width: 35% !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+  border-radius: 10px !important;
+  border: 1.5px solid #111111 !important;
+  background: #ffffff !important;
+  color: #111111 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+}
+
+#step3-submit-btn {
+  flex: 1 1 63% !important;
+  max-width: 63% !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  line-height: 1.1em !important;
+  white-space: normal !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+  border-radius: 10px !important;
+  border: none !important;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%) !important;
+  color: #ffffff !important;
+  padding: 0 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 15px rgba(109, 40, 217, 0.4) !important;
+}
+
+@media (max-width: 480px) {
+  #wizard-step3-modal-footer {
+    padding: 10px 12px 14px 12px !important;
+    gap: 6px !important;
+  }
+
+  #step3-back-btn {
+    flex: 0 0 34% !important;
+    max-width: 34% !important;
+    font-size: 13px !important;
+    height: 42px !important;
+  }
+
+  #step3-submit-btn {
+    flex: 1 1 64% !important;
+    max-width: 64% !important;
+    font-size: 12.5px !important;
+    height: 42px !important;
+    padding: 0 6px !important;
+  }
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
