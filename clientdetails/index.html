@@ -1144,15 +1144,43 @@
     
 <style>
 /* ------------------------------------------------------------------------
-   PERFECT MOBILE & DESKTOP FOOTER STYLING (DARK THEME)
+   RECTIFIED FOOTER STYLING (PROMINENT LOGO, BG PHOTO, PROPER ORDER)
    ------------------------------------------------------------------------ */
+
+/* 1. Ensure Footer Background Photo/Graphic (CjiwHq...) is Visible */
 footer,
 .framer-PYzaz,
-.framer-PYzaz * {
-  background-color: transparent !important;
+.framer-lrmfcq {
+  position: relative !important;
   background: transparent !important;
+  background-color: transparent !important;
+  overflow: hidden !important;
 }
 
+/* Background image wrapper inside footer */
+footer [data-framer-background-image-wrapper="true"],
+.framer-lrmfcq [data-framer-background-image-wrapper="true"] {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;
+  opacity: 0.45 !important;
+  pointer-events: none !important;
+}
+
+footer [data-framer-background-image-wrapper="true"] img,
+.framer-lrmfcq [data-framer-background-image-wrapper="true"] img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* 2. All Footer Text & Links Contrast */
 footer p,
 footer a,
 footer span,
@@ -1164,23 +1192,26 @@ footer span,
 .framer-lrmfcq span,
 [data-framer-name="All rights Reserved"] p,
 [data-framer-name="rights"] p,
-.framer-1znye5 p {
+.framer-1znye5 p,
+.framer-kloh8r p {
   color: #FFFFFF !important;
   --framer-text-color: #FFFFFF !important;
   opacity: 1 !important;
   visibility: visible !important;
+  z-index: 5 !important;
 }
 
 .framer-lrmfcq a,
 footer a {
-  color: #a855f7 !important;
+  color: #c084fc !important;
   text-decoration: none !important;
+  font-weight: 500 !important;
   transition: color 0.2s ease !important;
 }
 
 .framer-lrmfcq a:hover,
 footer a:hover {
-  color: #c084fc !important;
+  color: #e9d5ff !important;
   text-decoration: underline !important;
 }
 
@@ -1193,8 +1224,9 @@ footer::before,
   content: none !important;
 }
 
+/* 3. MOBILE FOOTER RE-ORDERING AND LOGO ENHANCEMENT */
 @media (max-width: 809.98px) {
-  /* Hide Desktop and Tablet footer tags completely on Mobile */
+  /* Hide Desktop and Tablet footer tags on Mobile */
   footer,
   .framer-PYzaz,
   [data-framer-name="Desktop"],
@@ -1209,7 +1241,7 @@ footer::before,
     pointer-events: none !important;
   }
 
-  /* Make Mobile Footer (Bottomblock / .framer-lrmfcq) display cleanly */
+  /* Mobile Footer Container */
   .framer-lrmfcq {
     display: flex !important;
     flex-direction: column !important;
@@ -1219,56 +1251,78 @@ footer::before,
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
-    padding: 40px 20px 50px 20px !important;
-    margin-top: 40px !important;
+    padding: 45px 20px 40px 20px !important;
+    margin-top: 50px !important;
     position: relative !important;
     z-index: 100 !important;
-    background: rgba(10, 6, 25, 0.9) !important;
-    backdrop-filter: blur(10px) !important;
-    -webkit-backdrop-filter: blur(10px) !important;
-    border-top: 1px solid rgba(151, 29, 204, 0.25) !important;
-    border-bottom: None !important;
+    background: linear-gradient(180deg, rgba(3, 2, 10, 0.4) 0%, rgba(10, 6, 25, 0.95) 100%) !important;
+    border-top: 1px solid rgba(151, 29, 204, 0.35) !important;
   }
 
-  .framer-lrmfcq .framer-11s640i,
-  .framer-lrmfcq .framer-1crry6v,
-  .framer-lrmfcq .framer-i26irx,
-  .framer-lrmfcq .framer-526xyv,
-  .framer-lrmfcq .framer-1k6z5tx {
+  /* Re-order elements inside .framer-11s640i (heading container) */
+  .framer-lrmfcq .framer-11s640i {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    text-align: center !important;
+    width: 100% !important;
+    gap: 16px !important;
+    z-index: 5 !important;
+  }
+
+  /* FORCE LOGO & CONTACT INFO TO TOP (ORDER: 1) */
+  .framer-lrmfcq .framer-1crry6v,
+  .framer-lrmfcq [data-framer-name="allinfo"] {
+    order: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
     width: 100% !important;
     gap: 12px !important;
   }
 
-  .framer-lrmfcq p,
-  .framer-lrmfcq a,
-  .framer-lrmfcq span {
-    text-align: center !important;
-    font-size: 14px !important;
-    line-height: 1.6em !important;
-    margin: 4px 0 !important;
-    word-break: break-word !important;
+  /* LOGO WRAPPER AND LARGE PROMINENT LOGO (ORDER: 1) */
+  .framer-lrmfcq .framer-i26irx,
+  .framer-lrmfcq .framer-4in8ie,
+  .framer-lrmfcq [data-framer-name="email"] {
+    order: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-bottom: 8px !important;
   }
 
-  /* Logo inside Mobile Footer */
-  .framer-lrmfcq img {
-    height: 32px !important;
-    max-height: 36px !important;
+  /* PROMINENT LOGO SIZE IN FOOTER */
+  .framer-lrmfcq img:not([src*="CjiwHqM"]) {
+    height: 52px !important;
+    max-height: 65px !important;
     width: auto !important;
+    max-width: 240px !important;
     display: block !important;
-    margin: 0 auto 12px auto !important;
+    margin: 0 auto !important;
     object-fit: contain !important;
-    filter: drop-shadow(0 2px 8px rgba(151, 29, 204, 0.5)) !important;
+    filter: drop-shadow(0 0 20px rgba(151, 29, 204, 0.65)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.8)) !important;
   }
 
-  .framer-lrmfcq .framer-1znye5 {
-    margin-top: 16px !important;
-    opacity: 0.85 !important;
+  /* FORCE "ALL RIGHTS RESERVED" TO VERY BOTTOM (ORDER: 3) */
+  .framer-lrmfcq .framer-1znye5,
+  .framer-lrmfcq [data-framer-name="All rights Reserved"] {
+    order: 3 !important;
+    margin-top: 24px !important;
+    padding-top: 16px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .framer-lrmfcq .framer-1znye5 p {
     font-size: 13px !important;
+    opacity: 0.75 !important;
+    letter-spacing: 0.02em !important;
+    margin: 0 !important;
+    text-align: center !important;
   }
 }
 </style>
