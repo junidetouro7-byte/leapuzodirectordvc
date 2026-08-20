@@ -1389,6 +1389,133 @@
   }
 }
 </style>
+<style>
+/* ------------------------------------------------------------------------
+   FORCE INLINE STEP 5 REVIEW CARD (NO WHITE POP-UP MODAL OVERLAY)
+   ------------------------------------------------------------------------ */
+#wizard-step3-modal-overlay,
+#wizard-modal-overlay,
+.modal-overlay,
+.wizard-modal {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Inline Review Container Styling (Dark Theme) */
+#wizard-review-container {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  background-color: #0a0a0a !important;
+  color: #ffffff !important;
+  border: 1.5px solid rgba(151, 29, 204, 0.8) !important;
+  border-radius: 12px !important;
+  padding: 24px 20px !important;
+  margin: 0 0 24px 0 !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+}
+
+#wizard-review-container h2,
+#wizard-review-container h3,
+.review-header-title {
+  color: #ffffff !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  margin-bottom: 8px !important;
+}
+
+#wizard-review-container p,
+.review-header-sub {
+  color: rgba(255, 255, 255, 0.75) !important;
+  font-size: 14px !important;
+  line-height: 1.5em !important;
+  margin-bottom: 16px !important;
+}
+
+/* Response rows inside Step 5 inline container */
+.review-item-row,
+.wizard-review-item {
+  margin-bottom: 14px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.review-item-label {
+  color: rgba(255, 255, 255, 0.65) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  margin-bottom: 4px !important;
+}
+
+.review-item-value {
+  color: #ffffff !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  background: rgba(151, 29, 204, 0.15) !important;
+  border: 1px solid rgba(151, 29, 204, 0.4) !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  word-break: break-word !important;
+}
+
+/* Checkbox & Confirm text */
+.review-confirm-row {
+  margin-top: 20px !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  line-height: 1.5em !important;
+}
+
+.review-confirm-row input[type="checkbox"] {
+  accent-color: #971dcc !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin-top: 2px !important;
+}
+
+/* Inline Step 5 Footer Navigation Buttons */
+#wizard-inline-nav-bar,
+.wizard-review-footer {
+  display: flex !important;
+  gap: 12px !important;
+  margin-top: 24px !important;
+  width: 100% !important;
+}
+
+#wizard-inline-back-btn,
+.wizard-review-back-btn {
+  flex: 0 0 35% !important;
+  height: 48px !important;
+  background: #12121a !important;
+  color: #ffffff !important;
+  border: 1.5px solid rgba(151, 29, 204, 0.8) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  cursor: pointer !important;
+}
+
+#wizard-inline-submit-btn,
+.wizard-review-submit-btn {
+  flex: 1 1 65% !important;
+  height: 48px !important;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  cursor: pointer !important;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5) !important;
+}
+</style></style>
 </head>
 <body>
 
@@ -3028,7 +3155,7 @@ footers.forEach(footer => {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
       document.body.style.touchAction = '';
-      sectionTitle.style.setProperty('display', 'block', 'important');
+      sectionTitle.style.setProperty('display', 'none', 'important');
       sectionTitle.textContent = "Company Information";
       if (step3Overlay) step3Overlay.style.setProperty('display', 'none', 'important');
       if (confirmOverlay) confirmOverlay.style.setProperty('display', 'none', 'important');
@@ -3037,7 +3164,7 @@ footers.forEach(footer => {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
       document.body.style.touchAction = '';
-      sectionTitle.style.setProperty('display', 'block', 'important');
+      sectionTitle.style.setProperty('display', 'none', 'important');
       sectionTitle.textContent = "Company FAQs";
       if (step3Overlay) step3Overlay.style.setProperty('display', 'none', 'important');
       if (confirmOverlay) confirmOverlay.style.setProperty('display', 'none', 'important');
@@ -3046,7 +3173,7 @@ footers.forEach(footer => {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
       document.body.style.touchAction = '';
-      sectionTitle.style.setProperty('display', 'block', 'important');
+      sectionTitle.style.setProperty('display', 'none', 'important');
       sectionTitle.textContent = "Credentials (Optional)";
       if (step3Overlay) step3Overlay.style.setProperty('display', 'none', 'important');
       if (confirmOverlay) confirmOverlay.style.setProperty('display', 'none', 'important');
@@ -3055,7 +3182,7 @@ footers.forEach(footer => {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
       document.body.style.touchAction = '';
-      sectionTitle.style.setProperty('display', 'block', 'important');
+      sectionTitle.style.setProperty('display', 'none', 'important');
       sectionTitle.textContent = "Brand Insights (Optional)";
       if (step3Overlay) step3Overlay.style.setProperty('display', 'none', 'important');
       if (confirmOverlay) confirmOverlay.style.setProperty('display', 'none', 'important');
@@ -3193,7 +3320,7 @@ footers.forEach(footer => {
         }
 
         // Force label element to be a clean vertical flex container
-        label.style.setProperty('display', 'flex', 'important');
+        label.style.setProperty('display', 'none', 'important');
         label.style.setProperty('flex-direction', 'column', 'important');
         label.style.setProperty('height', 'auto', 'important');
         label.style.setProperty('min-height', '0px', 'important');
@@ -4119,6 +4246,8 @@ footers.forEach(footer => {
     if (!overlay) {
       overlay = document.createElement('div');
       overlay.id = 'wizard-step3-modal-overlay';
+overlay.style.setProperty("display", "none", "important");
+
       overlay.style.cssText = `
         position: fixed !important;
         top: 0 !important;
@@ -4236,7 +4365,7 @@ footers.forEach(footer => {
     document.documentElement.style.setProperty('overflow', 'hidden', 'important');
     document.body.style.setProperty('overflow', 'hidden', 'important');
     document.body.style.setProperty('touch-action', 'none', 'important');
-    overlay.style.setProperty('display', 'flex', 'important');
+    overlay.style.setProperty('display', 'none', 'important');
     overlay.innerHTML = '';
 
     const modal = document.createElement('div');
