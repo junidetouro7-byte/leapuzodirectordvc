@@ -1468,6 +1468,76 @@
   }
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   TRANSPARENT TOP-MIDDLE HERO LOGO (NO BG CARD, ABSOLUTE IN HERO)
+   ------------------------------------------------------------------------ */
+#leapuzo-mobile-hero-logo {
+  display: none !important;
+}
+
+@media (max-width: 809.98px) {
+  #leapuzo-top-nav {
+    display: none !important;
+  }
+
+  /* Clean transparent logo fixed at top-middle of Hero section (No background card, no floating on scroll) */
+  #leapuzo-mobile-hero-logo {
+    position: absolute !important;
+    top: 35px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 99999 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: auto !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    width: auto !important;
+  }
+
+  .leapuzo-mobile-hero-logo-img {
+    height: 48px !important;
+    max-height: 56px !important;
+    width: auto !important;
+    max-width: 260px !important;
+    display: block !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    image-rendering: -webkit-optimize-contrast !important;
+    filter: drop-shadow(0 0 20px rgba(151, 29, 204, 0.95)) drop-shadow(0 3px 10px rgba(0, 0, 0, 0.95)) !important;
+  }
+
+  /* Full Screen Height Mobile Hero Section with Clean Background Artwork */
+  .framer-wr2ci8,
+  [data-framer-name="About"],
+  .framer-9ebtwc,
+  [data-framer-name="Hero"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    padding: 90px 16px 30px 16px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-image: url('mobile_hero_bg.png?v=5') !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+  }
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
