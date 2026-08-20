@@ -2815,6 +2815,33 @@ div:has(> a[href*="framer.com"]) {
   }
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   ELIMINATE OLD BACKGROUND IMAGE FLASH & SET DESKTOP HERO BACKGROUND
+   ------------------------------------------------------------------------ */
+/* Permanently hide all Framer background image wrappers in hero section */
+.framer-wr2ci8 [data-framer-background-image-wrapper="true"],
+.framer-body-au755g > [data-framer-background-image-wrapper="true"],
+#main > div > [data-framer-background-image-wrapper="true"],
+#main [data-framer-name="Desktop"] > [data-framer-background-image-wrapper="true"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+@media (min-width: 810px) {
+  html, body, #main, .framer-body-au755g, .framer-wr2ci8 {
+    background-color: #03020a !important;
+    background-image: url('desktop_hero_bg.png?v=2') !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+  }
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
