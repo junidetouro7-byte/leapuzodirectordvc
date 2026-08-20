@@ -2872,6 +2872,25 @@ div:has(> a[href*="framer.com"]) {
   visibility: visible !important;
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   CRITICAL INSTANT FORM HIDE FOR STEPS 2-5 (ELIMINATES FORM FLASH ON LOAD)
+   ------------------------------------------------------------------------ */
+/* Hide all labels after Step 1 inputs before JS hydration runs */
+form#begin label:nth-child(n+19),
+form#begin label[data-step="2"],
+form#begin label[data-step="3"],
+form#begin label[data-step="4"],
+form#begin label[data-step="5"] {
+  display: none !important;
+}
+
+/* Ensure form container has smooth instant background and no jump */
+form#begin {
+  min-height: 480px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
