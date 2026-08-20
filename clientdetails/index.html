@@ -1314,14 +1314,28 @@
   }
 }
 </style></style>
+<style>
+/* ------------------------------------------------------------------------
+   GLOBAL REMOVAL OF TOP-LEFT SMALL LOGO (MOBILE & DESKTOP)
+   ------------------------------------------------------------------------ */
+#leapuzo-top-nav,
+.leapuzo-brand-logo,
+.leapuzo-header-logo-img {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+}
+</style></style>
 </head>
 <body>
 
-<div id="leapuzo-top-nav">
-  <a href="https://leapuzo.in" class="leapuzo-brand-logo">
-    <img src="leapuzo_logo.png" alt="Leapuzo" class="leapuzo-header-logo-img" style="height: 28px; width: auto; display: block;" />
-  </a>
-</div>
+
 
 	<script async src="https://events.framer.com/script?v=2" data-fid="d3d0d80607ebc9e862067d03fde11b7e0699c1b239263779defd3631b49c9786" data-no-nt></script>
 	<!-- Start of bodyStart -->
