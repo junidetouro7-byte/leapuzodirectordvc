@@ -1143,447 +1143,14 @@
 
     
 <style>
-/* ------------------------------------------------------------------------
-   HYDRATION-PROOF FOOTER LOGO STYLING
-   ------------------------------------------------------------------------ */
 
-footer,
-.framer-PYzaz,
-.framer-lrmfcq {
-  position: relative !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  overflow: hidden !important;
-}
-
-/* Outer background image photo of footer */
-footer > [data-framer-background-image-wrapper="true"],
-.framer-lrmfcq > [data-framer-background-image-wrapper="true"] {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  z-index: 1 !important;
-  opacity: 0.35 !important;
-  pointer-events: none !important;
-}
-
-footer > [data-framer-background-image-wrapper="true"] img,
-.framer-lrmfcq > [data-framer-background-image-wrapper="true"] img {
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-}
-
-/* All text & links white contrast */
-footer p,
-footer a,
-footer span,
-.framer-PYzaz p,
-.framer-PYzaz a,
-.framer-PYzaz span,
-.framer-lrmfcq p,
-.framer-lrmfcq a,
-.framer-lrmfcq span {
-  color: #FFFFFF !important;
-  --framer-text-color: #FFFFFF !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  z-index: 5 !important;
-  text-align: center !important;
-}
-
-.framer-lrmfcq a,
-footer a {
-  color: #c084fc !important;
-  text-decoration: none !important;
-  font-weight: 500 !important;
-}
-
-.framer-lrmfcq a:hover,
-footer a:hover {
-  color: #e9d5ff !important;
-  text-decoration: underline !important;
-}
-
-footer::before,
-.framer-PYzaz::before,
-#body-bottom-gradient-overlay,
-.framer-125xon {
-  display: none !important;
-  content: none !important;
-}
-
-@media (max-width: 809.98px) {
-  footer,
-  .framer-PYzaz,
-  [data-framer-name="Desktop"],
-  [data-framer-name="Tablet"] {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* Mobile Footer Outer Box */
-  .framer-lrmfcq {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    margin-top: 16px !important;
-    padding: 28px 16px 32px 16px !important;
-    height: auto !important;
-    position: relative !important;
-    z-index: 100 !important;
-    background: linear-gradient(180deg, rgba(3, 2, 10, 0.3) 0%, rgba(10, 6, 25, 0.95) 100%) !important;
-    border-top: 1px solid rgba(151, 29, 204, 0.3) !important;
-  }
-
-  /* Reset Framer 427px height & 62px padding */
-  .framer-lrmfcq .framer-11s640i,
-  .framer-lrmfcq .framer-1crry6v {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    text-align: center !important;
-    width: 100% !important;
-    height: auto !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    gap: 16px !important;
-    position: relative !important;
-    z-index: 5 !important;
-  }
-
-  /* 1. LOGO ROW & CONTAINER (ORDER: 1 AT VERY TOP) */
-  .framer-lrmfcq .framer-i26irx,
-  .framer-lrmfcq .framer-4in8ie {
-    order: 1 !important;
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    width: 100% !important;
-    height: auto !important;
-    min-height: 75px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* Force inner background image wrapper to be relative and 75px tall */
-  .framer-lrmfcq .framer-4in8ie [data-framer-background-image-wrapper="true"] {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    width: 100% !important;
-    height: 75px !important;
-    min-height: 75px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  /* HYDRATION-PROOF LOGO IMAGE STYLING */
-  .framer-lrmfcq .framer-4in8ie img,
-  .leapuzo-footer-logo-img {
-    height: 75px !important;
-    max-height: 85px !important;
-    width: auto !important;
-    max-width: 290px !important;
-    display: block !important;
-    margin: 0 auto !important;
-    object-fit: contain !important;
-    filter: drop-shadow(0 0 22px rgba(151, 29, 204, 0.8)) drop-shadow(0 4px 15px rgba(0, 0, 0, 0.9)) !important;
-  }
-
-  /* 2. EMAIL LINK (ORDER: 2) */
-  .framer-lrmfcq .framer-xvjj9p,
-  .framer-lrmfcq a[href*="mailto"] {
-    order: 2 !important;
-    position: relative !important;
-    width: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 !important;
-  }
-
-  /* 3. PHONE LINK (ORDER: 3) */
-  .framer-lrmfcq .framer-1y01llr,
-  .framer-lrmfcq a[href*="tel"] {
-    order: 3 !important;
-    position: relative !important;
-    width: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 !important;
-  }
-
-  /* 4. COPYRIGHT STATEMENT (ORDER: 4 AT VERY BOTTOM) */
-  .framer-lrmfcq .framer-1znye5 {
-    order: 4 !important;
-    position: relative !important;
-    width: 100% !important;
-    height: auto !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin-top: 8px !important;
-    padding-top: 14px !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-  }
-
-  .framer-lrmfcq .framer-1znye5 p {
-    font-size: 13px !important;
-    opacity: 0.8 !important;
-    margin: 0 !important;
-  }
-}
+<style>
 </style>
 <style>
-/* ------------------------------------------------------------------------
-   PROMINENT BIG TOP-MIDDLE LOGO & MOBILE HERO LAYOUT
-   ------------------------------------------------------------------------ */
-@media (max-width: 809.98px) {
-  /* Hide fixed top-left pill nav on mobile so the big top-middle logo is the focal point */
-  #leapuzo-top-nav {
-    display: none !important;
-    visibility: hidden !important;
-  }
-
-  /* Display the Leapuzo Logo BIG and CENTERED at the TOP MIDDLE of the Mobile Hero Screen */
-  .leapuzo-hero-mobile-logo-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    margin: 10px auto 20px auto !important;
-    z-index: 9999 !important;
-    position: relative !important;
-  }
-
-  .leapuzo-hero-mobile-logo-img {
-    width: 290px !important;
-    max-width: 88vw !important;
-    height: auto !important;
-    display: block !important;
-    margin: 0 auto !important;
-    object-fit: contain !important;
-    filter: drop-shadow(0 0 25px rgba(151, 29, 204, 0.95)) drop-shadow(0 4px 18px rgba(0, 0, 0, 0.95)) !important;
-  }
-
-  /* Full Screen Height Mobile Hero Section with Uploaded Background Artwork */
-  .framer-wr2ci8,
-  [data-framer-name="About"],
-  .framer-9ebtwc {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-height: 100vh !important;
-    height: auto !important;
-    padding: 30px 16px 30px 16px !important;
-    box-sizing: border-box !important;
-    position: relative !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    background-image: url('mobile_hero_bg.png?v=3') !important;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-  }
-
-  /* Injected background layer override */
-  #leapuzo-hero-bg {
-    width: 100vw !important;
-    height: 100vh !important;
-    top: 0 !important;
-    left: 0 !important;
-    transform: none !important;
-    opacity: 1 !important;
-    background-image: url('mobile_hero_bg.png?v=3') !important;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-  }
-}
-</style></style>
-<style>
-/* ------------------------------------------------------------------------
-   FORCE MOBILE HERO SECTION IMAGE OVERRIDES
-   ------------------------------------------------------------------------ */
-@media (max-width: 809.98px) {
-  /* Force all hero section background images to display mobile_hero_bg.png?v=3 with object-fit: contain/cover */
-  [data-framer-name="Hero"] img,
-  .framer-1u6a2tv img,
-  .framer-1emrrf1 img,
-  .framer-wr2ci8 img,
-  .framer-9ebtwc img {
-    content: url('mobile_hero_bg.png?v=3') !important;
-    object-fit: cover !important;
-    object-position: center top !important;
-    width: 100% !important;
-    height: 100% !important;
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-}
-</style></style>
-<style>/* ------------------------------------------------------------------------
-   HYDRATION-PROOF PROMINENT TOP-MIDDLE MOBILE HERO LOGO
-   ------------------------------------------------------------------------ */
-.leapuzo-hero-mobile-logo-wrapper {
-  display: none !important;
-}
-
-@media (max-width: 809.98px) {
-  #leapuzo-top-nav {
-    display: none !important;
-  }
-
-  .leapuzo-hero-mobile-logo-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    margin: 15px auto 25px auto !important;
-    padding: 0 !important;
-    z-index: 99999 !important;
-    position: relative !important;
-  }
-
-  .leapuzo-hero-mobile-logo-img {
-    width: 290px !important;
-    max-width: 88vw !important;
-    height: auto !important;
-    display: block !important;
-    margin: 0 auto !important;
-    object-fit: contain !important;
-    filter: drop-shadow(0 0 25px rgba(151, 29, 204, 0.95)) drop-shadow(0 4px 18px rgba(0, 0, 0, 0.95)) !important;
-  }
-}
-</style></style>
-<style>/* ------------------------------------------------------------------------
-   PERFECT MOBILE PROGRESS STEPPER ALIGNMENT (NO OVERLAPS)
-   ------------------------------------------------------------------------ */
-@media (max-width: 809.98px) {
-  #wizard-stepper-root {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-    margin: 0 auto 20px auto !important;
-    padding: 0 4px !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: flex-start !important;
-    position: relative !important;
-  }
-
-  .progress-track-bg,
-  .progress-track-fill {
-    top: 16px !important;
-  }
-
-  .progress-step {
-    flex: 1 1 0% !important;
-    min-width: 0 !important; /* CRITICAL: prevents flex overflow */
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    text-align: center !important;
-    gap: 4px !important;
-    padding: 0 2px !important;
-    box-sizing: border-box !important;
-  }
-
-  .step-num {
-    width: 32px !important;
-    height: 32px !important;
-    min-width: 32px !important;
-    min-height: 32px !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    line-height: 30px !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    margin: 0 auto !important;
-  }
-
-  .step-label {
-    font-size: 9px !important;
-    font-weight: 600 !important;
-    line-height: 1.15em !important;
-    letter-spacing: 0px !important; /* Removes 1px letter spacing overflow */
-    text-transform: uppercase !important;
-    text-align: center !important;
-    word-break: break-word !important;
-    overflow-wrap: break-word !important;
-    white-space: normal !important;
-    width: 100% !important;
-    max-width: 64px !important;
-    margin-top: 4px !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Form Title Heading spacing */
-  #wizard-section-title,
-  .framer-1ol9gzi p {
-    font-size: 22px !important;
-    line-height: 1.3em !important;
-    text-align: center !important;
-    margin-bottom: 16px !important;
-  }
-}
-</style></style>
-<style>/* ------------------------------------------------------------------------
-   HIDE BEGIN BUTTON ON MOBILE ALONE
-   ------------------------------------------------------------------------ */
-@media (max-width: 809.98px) {
-  .framer-ytztka-container,
-  .framer-1rzzwcs-container,
-  .framer-1c8lm2a-container,
-  a[href*="begin"],
-  a[href*="#begin"],
-  [data-framer-name="Desktop V1"],
-  [data-framer-name="Primary "] {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    height: 0 !important;
-    width: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    pointer-events: none !important;
-    position: absolute !important;
-  }
-}
-</style></style>
+</style>
+<style></style>
+<style></style>
+<style></style>
 <style>
 /* ------------------------------------------------------------------------
    STEP 5 REVIEW MODAL POPUP RESPONSIVE BUTTON FIX
@@ -1639,31 +1206,30 @@ footer::before,
   }
 }
 </style></style>
-<style>/* ------------------------------------------------------------------------
-   PERMANENT SECOND FOOTER ELIMINATION (DESKTOP & MOBILE)
+<style></style>
+<style id="leapuzo-master-unified-styles">
+/* ------------------------------------------------------------------------
+   LEAPUZO UNIFIED MASTER STYLESHEET
    ------------------------------------------------------------------------ */
 
-/* ALWAYS HIDE TABLET FOOTER VARIANT (footer[data-framer-name="Tablet"] / .framer-v-5n2zug) */
-footer[data-framer-name="Tablet"],
-.framer-v-5n2zug,
-.framer-PYzaz.framer-v-5n2zug {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  min-height: 0 !important;
-  max-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  pointer-events: none !important;
-  position: absolute !important;
-  top: -9999px !important;
-}
-
-/* DESKTOP (min-width: 810px): DISPLAY ONLY DESKTOP FOOTER (footer[data-framer-name="Desktop"]) */
+/* ========================================================================
+   1. DESKTOP & TABLET STYLES (min-width: 810px)
+   ======================================================================== */
 @media (min-width: 810px) {
-  /* HIDE MOBILE FOOTER (.framer-lrmfcq) ON DESKTOP */
+  /* SHOW ONLY THE PRIMARY DESKTOP FOOTER */
+  footer[data-framer-name="Desktop"],
+  .framer-PYzaz.framer-v-1uy2d1 {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 10 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    margin: 0 !important;
+  }
+
+  /* ABSOLUTELY HIDE MOBILE FOOTER (.framer-lrmfcq) ON DESKTOP */
   .framer-lrmfcq,
   [data-framer-name="Bottomblock"]:not(footer [data-framer-name="Bottomblock"]) {
     display: none !important;
@@ -1678,24 +1244,32 @@ footer[data-framer-name="Tablet"],
     pointer-events: none !important;
     position: absolute !important;
     top: -9999px !important;
+    left: -9999px !important;
   }
 
-  /* SHOW ONLY ONE DESKTOP FOOTER */
-  footer[data-framer-name="Desktop"],
-  .framer-PYzaz.framer-v-1uy2d1 {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    position: relative !important;
-    z-index: 10 !important;
-    background: transparent !important;
-    background-color: transparent !important;
+  /* ABSOLUTELY HIDE TABLET FOOTER VARIANT ON DESKTOP */
+  footer[data-framer-name="Tablet"],
+  .framer-v-5n2zug {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
     margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    top: -9999px !important;
   }
 }
 
-/* MOBILE (max-width: 809.98px): DISPLAY ONLY MOBILE FOOTER (.framer-lrmfcq) */
+/* ========================================================================
+   2. MOBILE STYLES (max-width: 809.98px)
+   ======================================================================== */
 @media (max-width: 809.98px) {
+  /* HIDE ALL DESKTOP AND TABLET FOOTER TAGS ON MOBILE */
   footer,
   .framer-PYzaz,
   [data-framer-name="Desktop"],
@@ -1714,16 +1288,107 @@ footer[data-framer-name="Tablet"],
     top: -9999px !important;
   }
 
+  /* SHOW ONLY MOBILE FOOTER (.framer-lrmfcq) AT THE VERY BOTTOM */
   .framer-lrmfcq {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
+    text-align: center !important;
     width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-top: 24px !important;
+    padding: 28px 16px 32px 16px !important;
+    height: auto !important;
+    position: relative !important;
+    z-index: 100 !important;
+    background: linear-gradient(180deg, rgba(3, 2, 10, 0.4) 0%, rgba(10, 6, 25, 0.95) 100%) !important;
+    border-top: 1px solid rgba(151, 29, 204, 0.3) !important;
+  }
+
+  /* PREVENT HERO BACKGROUND IMAGE FROM REPEATING BELOW FOOTER */
+  #leapuzo-hero-bg {
+    display: none !important;
+    height: 0 !important;
+  }
+
+  /* SCOPE MOBILE HERO BACKGROUND IMAGE EXCLUSIVELY TO TOP HERO LANDING SECTION */
+  .framer-1u6a2tv[data-framer-name="Hero"],
+  [data-framer-name="Hero"] {
+    display: block !important;
+    width: 100% !important;
+    min-height: 100vh !important;
+    background-image: url('mobile_hero_bg.png?v=3') !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
     position: relative !important;
   }
+
+  /* Hide BEGIN button on mobile */
+  .framer-ytztka-container,
+  .framer-1rzzwcs-container,
+  .framer-1c8lm2a-container,
+  a[href*="begin"],
+  a[href*="#begin"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Mobile Stepper Alignment (No Overlaps) */
+  #wizard-stepper-root {
+    width: 100% !important;
+    margin: 0 auto 20px auto !important;
+    padding: 0 4px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    box-sizing: border-box !important;
+  }
+
+  .progress-step {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: center !important;
+    gap: 4px !important;
+    padding: 0 2px !important;
+    box-sizing: border-box !important;
+  }
+
+  .step-num {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .step-label {
+    font-size: 9px !important;
+    font-weight: 600 !important;
+    line-height: 1.15em !important;
+    letter-spacing: 0px !important;
+    text-transform: uppercase !important;
+    text-align: center !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+    width: 100% !important;
+    max-width: 64px !important;
+    margin-top: 4px !important;
+  }
 }
-</style></style>
+</style>
 </head>
 <body>
 
@@ -5697,57 +5362,54 @@ footers.forEach(footer => {
 </style>
 
 
+
+
+
 <script id="leapuzo-bulletproof-footer-enforcer">
 (function() {
-  function enforceSingleFooter() {
+  function enforceBreakpoints() {
     const isDesktop = window.innerWidth >= 810;
-    const lrmfcqFooters = document.querySelectorAll('.framer-lrmfcq, [data-framer-name="Bottomblock"]:not(footer [data-framer-name="Bottomblock"])');
+    const mobileFooters = document.querySelectorAll('.framer-lrmfcq, [data-framer-name="Bottomblock"]:not(footer [data-framer-name="Bottomblock"])');
     const desktopFooters = document.querySelectorAll('footer[data-framer-name="Desktop"], .framer-PYzaz.framer-v-1uy2d1');
     const tabletFooters = document.querySelectorAll('footer[data-framer-name="Tablet"], .framer-v-5n2zug');
+    const heroBgEl = document.getElementById('leapuzo-hero-bg');
 
     // Always destroy tablet footers
     tabletFooters.forEach(f => {
       f.style.setProperty('display', 'none', 'important');
       f.style.setProperty('visibility', 'hidden', 'important');
-      f.style.setProperty('height', '0px', 'important');
     });
 
     if (isDesktop) {
-      // DESKTOP: Hide mobile footer (.framer-lrmfcq), show desktop footer
-      lrmfcqFooters.forEach(f => {
+      // DESKTOP VIEW
+      mobileFooters.forEach(f => {
         f.style.setProperty('display', 'none', 'important');
         f.style.setProperty('visibility', 'hidden', 'important');
-        f.style.setProperty('height', '0px', 'important');
       });
       desktopFooters.forEach(f => {
         f.style.setProperty('display', 'flex', 'important');
         f.style.setProperty('visibility', 'visible', 'important');
-        f.style.setProperty('height', 'auto', 'important');
       });
     } else {
-      // MOBILE: Hide desktop footer, show mobile footer (.framer-lrmfcq)
+      // MOBILE VIEW
       desktopFooters.forEach(f => {
         f.style.setProperty('display', 'none', 'important');
         f.style.setProperty('visibility', 'hidden', 'important');
-        f.style.setProperty('height', '0px', 'important');
       });
-      lrmfcqFooters.forEach(f => {
+      mobileFooters.forEach(f => {
         f.style.setProperty('display', 'flex', 'important');
         f.style.setProperty('visibility', 'visible', 'important');
-        f.style.setProperty('height', 'auto', 'important');
       });
+      if (heroBgEl) {
+        heroBgEl.style.setProperty('display', 'none', 'important');
+      }
     }
   }
 
-  // Run immediately, on DOMContentLoaded, on load, and on window resize
-  enforceSingleFooter();
-  document.addEventListener('DOMContentLoaded', enforceSingleFooter);
-  window.addEventListener('load', enforceSingleFooter);
-  window.addEventListener('resize', enforceSingleFooter);
-
-  // MutationObserver to continuously override Framer dynamic style injections
-  const observer = new MutationObserver(enforceSingleFooter);
-  observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true });
+  enforceBreakpoints();
+  document.addEventListener('DOMContentLoaded', enforceBreakpoints);
+  window.addEventListener('load', enforceBreakpoints);
+  window.addEventListener('resize', enforceBreakpoints);
 })();
 </script>
 
