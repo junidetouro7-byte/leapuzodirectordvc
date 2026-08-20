@@ -1841,6 +1841,86 @@ div[data-framer-name="Desktop"],
   }
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   DESKTOP TITLE SPACING & ELEGANT STEPPER STYLING
+   ------------------------------------------------------------------------ */
+@media (min-width: 810px) {
+  /* Title & Purple Card Spacing (No Overlap) */
+  #wizard-section-title,
+  .framer-1ol9gzi p,
+  .framer-hznj3m p,
+  .contact-section-heading {
+    margin-top: 30px !important;
+    margin-bottom: 35px !important;
+    line-height: 1.4em !important;
+  }
+
+  #begin {
+    margin-top: 35px !important;
+    padding-top: 36px !important;
+  }
+
+  /* Desktop Stepper Progress Bar */
+  #wizard-stepper-root {
+    width: 100% !important;
+    max-width: 900px !important;
+    margin: 0 auto 36px auto !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .progress-track-bg,
+  .progress-track-fill {
+    top: 19px !important;
+  }
+
+  .progress-step {
+    flex: 1 1 0% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: center !important;
+    gap: 0 !important;
+  }
+
+  .step-num,
+  .progress-step-circle {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    max-width: 38px !important;
+    max-height: 38px !important;
+    aspect-ratio: 1 / 1 !important;
+    flex-shrink: 0 !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    line-height: 1em !important;
+    margin: 0 auto !important;
+  }
+
+  .step-label {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    line-height: 1.2em !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    color: rgba(255, 255, 255, 0.55) !important;
+    white-space: nowrap !important; /* CRITICAL: prevents text wrapping on desktop */
+    margin-top: 8px !important;
+  }
+
+  .progress-step.active .step-label,
+  #wizard-stepper-root .progress-step.completed .step-label {
+    color: #a855f7 !important;
+  }
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
