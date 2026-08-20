@@ -1584,6 +1584,121 @@ footer::before,
   }
 }
 </style></style>
+<style>
+/* ------------------------------------------------------------------------
+   STEP 5 REVIEW MODAL POPUP RESPONSIVE BUTTON FIX
+   ------------------------------------------------------------------------ */
+#wizard-step3-modal-overlay {
+  padding: 16px !important;
+  box-sizing: border-box !important;
+}
+
+#wizard-step3-modal-overlay > div {
+  width: 92% !important;
+  max-width: 560px !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+#wizard-step3-modal-footer {
+  padding: 14px 16px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  display: flex !important;
+  gap: 10px !important;
+}
+
+#step3-back-btn {
+  flex: 0 0 32% !important;
+  max-width: 35% !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+}
+
+#step3-submit-btn {
+  flex: 1 1 68% !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 480px) {
+  #wizard-step3-modal-overlay {
+    padding: 12px !important;
+  }
+  
+  #wizard-step3-modal-footer {
+    padding: 12px !important;
+    gap: 8px !important;
+  }
+
+  #step3-back-btn,
+  #step3-submit-btn {
+    font-size: 13px !important;
+    height: 44px !important;
+    padding: 0 8px !important;
+  }
+}
+</style></style>
+<style>/* ------------------------------------------------------------------------
+   SINGLE FOOTER PER BREAKPOINT FIX (PREVENT DOUBLE FOOTER ON DESKTOP)
+   ------------------------------------------------------------------------ */
+
+/* 1. DESKTOP & TABLET (min-width: 810px): HIDE MOBILE FOOTER (.framer-lrmfcq) */
+@media (min-width: 810px) {
+  .framer-lrmfcq {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    position: absolute !important;
+  }
+
+  /* Show only Desktop Footer */
+  footer[data-framer-name="Desktop"],
+  .framer-PYzaz.framer-v-1uy2d1 {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    position: relative !important;
+    z-index: 10 !important;
+    background: transparent !important;
+  }
+
+  /* Hide Tablet Footer on Desktop */
+  footer[data-framer-name="Tablet"] {
+    display: none !important;
+  }
+}
+
+/* 2. MOBILE (max-width: 809.98px): HIDE DESKTOP & TABLET FOOTER TAGS */
+@media (max-width: 809.98px) {
+  footer,
+  .framer-PYzaz,
+  [data-framer-name="Desktop"],
+  [data-framer-name="Tablet"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    position: absolute !important;
+  }
+
+  .framer-lrmfcq {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+</style></style>
 </head>
 <body>
 
@@ -4665,21 +4780,26 @@ footer::before,
 
     // 3. Sticky Modal Footer
     const footer = document.createElement('div');
+    footer.id = 'wizard-step3-modal-footer';
     footer.style.cssText = `
-      padding: 16px 32px;
-      border-top: 1px solid #EEEEEE;
-      background: #FFFFFF;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex: none;
+      padding: 16px !important;
+      border-top: 1px solid #EEEEEE !important;
+      background: #FFFFFF !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 12px !important;
+      flex: none !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      border-bottom-left-radius: 16px !important;
+      border-bottom-right-radius: 16px !important;
     `;
     footer.innerHTML = `
-      <button type="button" id="step3-back-btn" class="wizard-btn" style="background: #FFFFFF !important; color: #111111 !important; border: 1.5px solid #111111 !important; height: 44px; border-radius: 8px; font-weight: 600; font-size: 15px; padding: 0 28px; cursor: pointer; transition: all 0.2s ease;">
+      <button type="button" id="step3-back-btn" class="wizard-btn" style="flex: 0 0 35% !important; background: #FFFFFF !important; color: #111111 !important; border: 1.5px solid #111111 !important; height: 46px !important; border-radius: 8px !important; font-weight: 600 !important; font-size: 14px !important; padding: 0 12px !important; cursor: pointer; transition: all 0.2s ease !important; display: flex !important; align-items: center !important; justify-content: center !important; text-align: center !important; white-space: nowrap !important; box-sizing: border-box !important;">
         Back
       </button>
-      <button type="button" id="step3-submit-btn" class="wizard-btn" style="background: #6C3BFF !important; color: #FFFFFF !important; border: none !important; height: 44px; border-radius: 8px; font-weight: 600; font-size: 15px; padding: 0 32px; opacity: 0.5; cursor: not-allowed; box-shadow: 0 4px 15px rgba(108, 59, 255, 0.3); transition: all 0.2s ease;" disabled>
+      <button type="button" id="step3-submit-btn" class="wizard-btn" style="flex: 1 1 65% !important; background: #6C3BFF !important; color: #FFFFFF !important; border: none !important; height: 46px !important; border-radius: 8px !important; font-weight: 600 !important; font-size: 14px !important; padding: 0 12px !important; opacity: 0.5; cursor: not-allowed; box-shadow: 0 4px 15px rgba(108, 59, 255, 0.3) !important; transition: all 0.2s ease !important; display: flex !important; align-items: center !important; justify-content: center !important; text-align: center !important; white-space: nowrap !important; box-sizing: border-box !important;" disabled>
         Submit Application
       </button>
     `;
