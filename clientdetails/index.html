@@ -1268,6 +1268,52 @@
   }
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   OFFICIAL MOBILE HERO SECTION (NEW ARTWORK + NEW LOGO COMPOSITED)
+   ------------------------------------------------------------------------ */
+@media (max-width: 809.98px) {
+  /* Hide extra redundant logo wrappers since the logo is composited directly onto top-middle of artwork */
+  .leapuzo-hero-mobile-logo-wrapper {
+    display: none !important;
+  }
+
+  /* Mobile Hero Container Background Artwork */
+  .framer-wr2ci8,
+  [data-framer-name="About"],
+  .framer-9ebtwc,
+  [data-framer-name="Hero"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    padding: 70px 16px 30px 16px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-image: url('mobile_hero_bg.png?v=4') !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* Force hero foreground images to display mobile_hero_bg.png?v=4 */
+  [data-framer-name="Hero"] img,
+  .framer-1u6a2tv img,
+  .framer-1emrrf1 img,
+  .framer-wr2ci8 img,
+  .framer-9ebtwc img {
+    content: url('mobile_hero_bg.png?v=4') !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+  }
+}
+</style></style>
 </head>
 <body>
 
