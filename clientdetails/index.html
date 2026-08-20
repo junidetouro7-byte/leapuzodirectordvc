@@ -1359,12 +1359,35 @@ footer::before,
 </style>
 <style>
 /* ------------------------------------------------------------------------
-   UPLOADED MOBILE HERO BACKGROUND ARTWORK (media_1787200968161.png)
+   PROMINENT BIG TOP-MIDDLE LOGO & MOBILE HERO LAYOUT
    ------------------------------------------------------------------------ */
 @media (max-width: 809.98px) {
-  /* Hide extra redundant logo overlays since the artwork already has the Leapuzo logo */
-  .leapuzo-hero-mobile-logo-wrapper {
+  /* Hide fixed top-left pill nav on mobile so the big top-middle logo is the focal point */
+  #leapuzo-top-nav {
     display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Display the Leapuzo Logo BIG and CENTERED at the TOP MIDDLE of the Mobile Hero Screen */
+  .leapuzo-hero-mobile-logo-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin: 10px auto 20px auto !important;
+    z-index: 9999 !important;
+    position: relative !important;
+  }
+
+  .leapuzo-hero-mobile-logo-img {
+    width: 290px !important;
+    max-width: 88vw !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 0 25px rgba(151, 29, 204, 0.95)) drop-shadow(0 4px 18px rgba(0, 0, 0, 0.95)) !important;
   }
 
   /* Full Screen Height Mobile Hero Section with Uploaded Background Artwork */
@@ -1375,7 +1398,7 @@ footer::before,
     max-width: 100% !important;
     min-height: 100vh !important;
     height: auto !important;
-    padding: 70px 16px 30px 16px !important;
+    padding: 30px 16px 30px 16px !important;
     box-sizing: border-box !important;
     position: relative !important;
     display: flex !important;
@@ -1400,13 +1423,6 @@ footer::before,
     background-size: cover !important;
     background-position: center top !important;
     background-repeat: no-repeat !important;
-  }
-
-  /* Ensure top nav logo remains clean */
-  #leapuzo-top-nav {
-    top: 14px !important;
-    left: 14px !important;
-    z-index: 99999 !important;
   }
 }
 </style></style>
