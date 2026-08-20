@@ -2729,6 +2729,30 @@ div[data-framer-name="Desktop"],
   }
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   REMOVE ALL OPENING / ENTRANCE ANIMATIONS GLOBALLY
+   ------------------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  animation: none !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
+html,
+body,
+#main,
+#main *,
+footer,
+footer * {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
