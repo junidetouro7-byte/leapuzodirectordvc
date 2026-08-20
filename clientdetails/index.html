@@ -5226,15 +5226,22 @@ div:has(> a[href*="framer.com"]) {
   }
 
   function setupPhoneFieldValidation() {
+    const targetNames = [
+      'official contact number',
+      'primary contact person number',
+      'secondary contact person number'
+    ];
+
     const inputs = document.querySelectorAll('#begin input');
     inputs.forEach(input => {
-      if (!isStrictPhoneField(input)) {
-        // Ensure non-phone fields are clean of phone validation
-        delete input.validatePhoneField;
-        delete input.dataset.phoneValidationInitialized;
-        const label = input.closest('label') || input.parentElement;
-        const oldErr = label.querySelector('.phone-validation-error');
-        if (oldErr) oldErr.remove();
+      const name = (input.name || '').toLowerCase().trim();
+
+      // Match ONLY the 3 exact phone fields (or input.type === 'tel' excluding name/designation/email)
+      const isTarget = targetNames.some(tn => name === tn || name.includes(tn));
+      if (!isTarget && input.type !== 'tel') return;
+
+      // Explicitly EXCLUDE Name, Designation, Email, Address, PAN fields
+      if (name.includes('name') || name.includes('designation') || name.includes('email') || name.includes('address') || name.includes('pan')) {
         return;
       }
 
@@ -5262,10 +5269,10 @@ div:has(> a[href*="framer.com"]) {
       const getWrapper = () => label.querySelector('.framer-form-input-wrapper, .framer-form-text-input-wrapper') || input.parentElement;
 
       const validate = (checkLength = false) => {
-        let rawVal = input.value.trim();
+        let rawVal = input.value;
         const wrapper = getWrapper();
 
-        if (rawVal.length === 0) {
+        if (!rawVal || rawVal.trim().length === 0) {
           errorEl.style.display = 'none';
           errorEl.textContent = '';
           if (wrapper) {
@@ -5275,23 +5282,20 @@ div:has(> a[href*="framer.com"]) {
           return true;
         }
 
-        const hasPlus91 = rawVal.startsWith('+91') || rawVal.startsWith('+ 91');
-        let cleanDigits = rawVal.replace(/[^0-9]/g, '');
+        const trimmed = rawVal.trim();
+        const hasPlus91 = trimmed.startsWith('+91') || trimmed.startsWith('+ 91') || trimmed.startsWith('+');
+        let digitsOnly = trimmed.replace(/[^0-9]/g, '');
 
-        let subscriberDigits = cleanDigits;
-        if (hasPlus91 || (cleanDigits.length > 10 && cleanDigits.startsWith('91'))) {
-          if (cleanDigits.startsWith('91')) {
-            subscriberDigits = cleanDigits.slice(2);
+        let subscriberDigits = digitsOnly;
+        if (hasPlus91 || (digitsOnly.length > 10 && digitsOnly.startsWith('91'))) {
+          if (digitsOnly.startsWith('91')) {
+            subscriberDigits = digitsOnly.slice(2);
           }
         }
 
         if (subscriberDigits.length > 10) {
           subscriberDigits = subscriberDigits.slice(0, 10);
-          if (hasPlus91) {
-            input.value = '+91 ' + subscriberDigits;
-          } else {
-            input.value = subscriberDigits;
-          }
+          input.value = hasPlus91 ? '+91 ' + subscriberDigits : subscriberDigits;
         }
 
         if (subscriberDigits.length > 0) {
@@ -5344,14 +5348,8 @@ div:has(> a[href*="framer.com"]) {
 
       input.addEventListener('input', () => validate(false));
       input.addEventListener('blur', () => {
-        if (input.value.length > 0) {
+        if (input.value.trim().length > 0) {
           validate(true);
-        }
-      });
-      input.addEventListener('keydown', (e) => {
-        const allowedKeys = ['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'Home', 'End', '+', ' '];
-        if (!allowedKeys.includes(e.key) && e.key.length === 1 && !/\\d/.test(e.key) && !e.ctrlKey && !e.metaKey) {
-          e.preventDefault();
         }
       });
     });
