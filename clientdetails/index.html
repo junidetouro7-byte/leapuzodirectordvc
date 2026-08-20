@@ -2253,6 +2253,157 @@ div[data-framer-name="Desktop"],
   }
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   ULTIMATE MOBILE FOOTER LEFT ALIGNMENT OVERRIDE (DESKTOP UNTOUCHED)
+   ------------------------------------------------------------------------ */
+@media (max-width: 809.98px) {
+  /* Mobile Footer Outer Container */
+  .framer-lrmfcq {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    place-content: flex-start !important;
+    text-align: left !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 32px 20px 24px 24px !important;
+    margin-top: 35px !important;
+    position: relative !important;
+    z-index: 100 !important;
+    background-image: url('mobile_footer_bg.jpg?v=1') !important;
+    background-size: cover !important;
+    background-position: right center !important;
+    background-repeat: no-repeat !important;
+    border-top: 1px solid rgba(151, 29, 204, 0.4) !important;
+  }
+
+  /* Force ALL inner wrappers (.framer-526xyv, .framer-1k6z5tx, etc.) to left align */
+  .framer-lrmfcq .framer-11s640i,
+  .framer-lrmfcq .framer-1crry6v,
+  .framer-lrmfcq .framer-i26irx,
+  .framer-lrmfcq .framer-526xyv,
+  .framer-lrmfcq .framer-1k6z5tx,
+  .framer-lrmfcq div {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important; /* CRITICAL: Left Align */
+    justify-content: flex-start !important; /* CRITICAL: Left Align */
+    place-content: flex-start !important; /* CRITICAL: Left Align */
+    text-align: left !important;
+    width: 100% !important;
+    max-width: 68vw !important; /* Leaves room for 3D graphic on right */
+    height: auto !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    padding: 0 !important;
+    gap: 10px !important;
+    position: relative !important;
+  }
+
+  /* 1. LEAPUZO BRAND LOGO (TOP LEFT) */
+  .framer-lrmfcq .framer-i26irx,
+  .framer-lrmfcq .framer-4in8ie {
+    order: 1 !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    margin: 0 0 6px 0 !important;
+  }
+
+  .framer-lrmfcq img {
+    height: 50px !important;
+    max-height: 60px !important;
+    width: auto !important;
+    max-width: 200px !important;
+    display: block !important;
+    margin: 0 auto 0 0 !important; /* Left Align Logo Image */
+    object-fit: contain !important;
+    filter: drop-shadow(0 0 15px rgba(151, 29, 204, 0.7)) !important;
+  }
+
+  /* 2. EMAIL LINK (LEFT ALIGNED FLUSH TO LEFT EDGE) */
+  .framer-lrmfcq .framer-xvjj9p,
+  .framer-lrmfcq a[href*="mailto"] {
+    order: 2 !important;
+    position: relative !important;
+    top: auto !important;
+    left: 0 !important;
+    right: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    color: #ffffff !important;
+    font-size: 14.5px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    margin: 0 !important;
+  }
+
+  /* 3. PHONE LINK (LEFT ALIGNED FLUSH TO LEFT EDGE) */
+  .framer-lrmfcq .framer-1y01llr,
+  .framer-lrmfcq a[href*="tel"] {
+    order: 3 !important;
+    position: relative !important;
+    top: auto !important;
+    left: 0 !important;
+    right: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    color: #ffffff !important;
+    font-size: 14.5px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    margin: 0 !important;
+  }
+
+  /* Force all child text inside mail & phone to left align */
+  .framer-lrmfcq .framer-xvjj9p *,
+  .framer-lrmfcq .framer-1y01llr *,
+  .framer-lrmfcq a[href*="mailto"] *,
+  .framer-lrmfcq a[href*="tel"] * {
+    text-align: left !important;
+    margin-left: 0 !important;
+  }
+
+  /* 4. COPYRIGHT STATEMENT (BOTTOM CENTERED) */
+  .framer-lrmfcq .framer-1znye5 {
+    order: 4 !important;
+    position: relative !important;
+    top: auto !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 18px !important;
+    padding-top: 14px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .framer-lrmfcq .framer-1znye5 p,
+  .framer-lrmfcq .framer-1znye5 * {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 13px !important;
+    text-align: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
