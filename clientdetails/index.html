@@ -5182,24 +5182,43 @@ div[data-framer-name="Desktop"],
     document.head.appendChild(styleEl);
   }
 
+  function isStrictPhoneField(input) {
+    if (!input) return false;
+    const name = (input.name || '').toLowerCase().trim();
+
+    // Explicit Exclusion List for all Name, Designation, Email, Address, etc.
+    if (name.includes('name') || 
+        name.includes('designation') || 
+        name.includes('email') || 
+        name.includes('address') || 
+        name.includes('pan') || 
+        name.includes('url') || 
+        name.includes('goal') || 
+        name.includes('logo') || 
+        name.includes('msme') || 
+        name.includes('sector')) {
+      return false;
+    }
+
+    // Exact Match ONLY on true Phone Number input fields
+    return input.type === 'tel' ||
+           name === 'official contact number' ||
+           name === 'primary contact person number' ||
+           name === 'secondary contact person number';
+  }
+
   function setupPhoneFieldValidation() {
     const inputs = document.querySelectorAll('#begin input');
     inputs.forEach(input => {
-      const name = (input.name || '').toLowerCase();
-      
-      // EXCLUDE Name, Designation, Email, Address, PAN fields explicitly
-      if (name.includes('name') || name.includes('designation') || name.includes('email') || name.includes('address') || name.includes('pan') || name.includes('url')) {
+      if (!isStrictPhoneField(input)) {
+        // Ensure non-phone fields are clean of phone validation
+        delete input.validatePhoneField;
+        delete input.dataset.phoneValidationInitialized;
+        const label = input.closest('label') || input.parentElement;
+        const oldErr = label.querySelector('.phone-validation-error');
+        if (oldErr) oldErr.remove();
         return;
       }
-
-      // MATCH ONLY exact phone number input fields
-      const isPhoneField = 
-        input.type === 'tel' ||
-        name.includes('official contact number') ||
-        name.includes('primary contact person number') ||
-        name.includes('secondary contact person number');
-
-      if (!isPhoneField) return;
 
       if (input.dataset.phoneValidationInitialized) return;
       input.dataset.phoneValidationInitialized = 'true';
@@ -5313,7 +5332,7 @@ div[data-framer-name="Desktop"],
       });
       input.addEventListener('keydown', (e) => {
         const allowedKeys = ['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight', 'Home', 'End', '+', ' '];
-        if (!allowedKeys.includes(e.key) && e.key.length === 1 && !/\d/.test(e.key) && !e.ctrlKey && !e.metaKey) {
+        if (!allowedKeys.includes(e.key) && e.key.length === 1 && !/\\d/.test(e.key) && !e.ctrlKey && !e.metaKey) {
           e.preventDefault();
         }
       });
