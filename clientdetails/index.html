@@ -1357,6 +1357,59 @@ footer::before,
   }
 }
 </style>
+<style>
+/* ------------------------------------------------------------------------
+   UPLOADED MOBILE HERO BACKGROUND ARTWORK (media_1787200968161.png)
+   ------------------------------------------------------------------------ */
+@media (max-width: 809.98px) {
+  /* Hide extra redundant logo overlays since the artwork already has the Leapuzo logo */
+  .leapuzo-hero-mobile-logo-wrapper {
+    display: none !important;
+  }
+
+  /* Full Screen Height Mobile Hero Section with Uploaded Background Artwork */
+  .framer-wr2ci8,
+  [data-framer-name="About"],
+  .framer-9ebtwc {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 100vh !important;
+    height: auto !important;
+    padding: 70px 16px 30px 16px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-image: url('mobile_hero_bg.png') !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* Injected background layer override */
+  #leapuzo-hero-bg {
+    width: 100vw !important;
+    height: 100vh !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: none !important;
+    opacity: 1 !important;
+    background-image: url('mobile_hero_bg.png') !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+  }
+
+  /* Ensure top nav logo remains clean */
+  #leapuzo-top-nav {
+    top: 14px !important;
+    left: 14px !important;
+    z-index: 99999 !important;
+  }
+}
+</style></style>
 </head>
 <body>
 
