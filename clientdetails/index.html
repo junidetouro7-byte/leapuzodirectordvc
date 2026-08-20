@@ -1144,10 +1144,10 @@
     
 <style>
 /* ------------------------------------------------------------------------
-   PERFECT FOOTER LAYOUT (NO BLANK SPACE, TOP LOGO, BOTTOM COPYRIGHT)
+   PERFECT FOOTER LAYOUT (CENTERED VERTICAL STACK WITH EQUAL SPACING)
    ------------------------------------------------------------------------ */
 
-/* 1. Ensure Footer Background Photo/Graphic (CjiwHq...) is Visible */
+/* 1. Footer Container & Background Image Setup */
 footer,
 .framer-PYzaz,
 .framer-lrmfcq {
@@ -1157,7 +1157,6 @@ footer,
   overflow: hidden !important;
 }
 
-/* Background image wrapper inside footer */
 footer [data-framer-background-image-wrapper="true"],
 .framer-lrmfcq > [data-framer-background-image-wrapper="true"] {
   position: absolute !important;
@@ -1180,7 +1179,7 @@ footer [data-framer-background-image-wrapper="true"] img,
   object-fit: cover !important;
 }
 
-/* 2. All Footer Text & Links Contrast */
+/* 2. Base Typography & Link Colors */
 footer p,
 footer a,
 footer span,
@@ -1199,6 +1198,7 @@ footer span,
   opacity: 1 !important;
   visibility: visible !important;
   z-index: 5 !important;
+  text-align: center !important;
 }
 
 .framer-lrmfcq a,
@@ -1224,9 +1224,9 @@ footer::before,
   content: none !important;
 }
 
-/* 3. PERFECT MOBILE FOOTER LAYOUT */
+/* 3. CENTERED ONE-BY-ONE VERTICAL STACK WITH EQUAL SPACING */
 @media (max-width: 809.98px) {
-  /* Hide Desktop and Tablet footer tags on Mobile */
+  /* Hide Desktop/Tablet footer tags on Mobile */
   footer,
   .framer-PYzaz,
   [data-framer-name="Desktop"],
@@ -1238,10 +1238,9 @@ footer::before,
     margin: 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
-    pointer-events: none !important;
   }
 
-  /* Mobile Footer Outer Container */
+  /* Outer Mobile Footer Box */
   .framer-lrmfcq {
     display: flex !important;
     flex-direction: column !important;
@@ -1251,8 +1250,8 @@ footer::before,
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
-    margin-top: 16px !important; /* Minimal top margin to eliminate blank gap */
-    padding: 24px 16px 28px 16px !important; /* Compact top & bottom padding */
+    margin-top: 20px !important;
+    padding: 32px 16px 36px 16px !important;
     height: auto !important;
     min-height: auto !important;
     position: relative !important;
@@ -1261,63 +1260,41 @@ footer::before,
     border-top: 1px solid rgba(151, 29, 204, 0.3) !important;
   }
 
-  /* Inner Heading Container (.framer-11s640i) - OVERRIDE Framer height: 427px & padding: 62px 0 */
-  .framer-lrmfcq .framer-11s640i {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-    height: auto !important; /* Removes Framer 427px height */
-    min-height: auto !important;
-    padding: 0 !important; /* Removes Framer 62px 0 top padding */
-    margin: 0 !important;
-    gap: 14px !important;
-    z-index: 5 !important;
-    position: relative !important;
-  }
-
-  /* Info Container (.framer-1crry6v) - OVERRIDE Framer height: 241px */
+  /* Inner Flex Containers - Single Column with Uniform Gap */
+  .framer-lrmfcq .framer-11s640i,
   .framer-lrmfcq .framer-1crry6v {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 100% !important;
-    height: auto !important; /* Removes Framer 241px height */
-    padding: 0 !important;
-    margin: 0 !important;
-    gap: 10px !important;
-    order: 1 !important; /* PLACED AT TOP OF FOOTER */
-  }
-
-  /* Logo Row (.framer-i26irx) - OVERRIDE Framer height: 44% */
-  .framer-lrmfcq .framer-i26irx {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
+    text-align: center !important;
     width: 100% !important;
     height: auto !important;
+    min-height: auto !important;
     padding: 0 !important;
     margin: 0 !important;
+    gap: 18px !important; /* UNIFORM 18PX SPACING BETWEEN EVERY ITEM */
     position: relative !important;
+    z-index: 5 !important;
   }
 
-  /* Logo Element (.framer-4in8ie) - OVERRIDE Framer position: absolute; top: -21.6387% */
-  .framer-lrmfcq .framer-4in8ie {
-    position: relative !important; /* OVERRIDES Framer position: absolute */
-    top: auto !important;          /* OVERRIDES Framer top: -21.6387% */
-    left: auto !important;         /* OVERRIDES Framer left: -2.30061% */
-    width: 100% !important;        /* OVERRIDES Framer width: 52% */
-    height: auto !important;       /* OVERRIDES Framer height: 43% */
+  /* 1. LEAPUZO LOGO (ORDER: 1) */
+  .framer-lrmfcq .framer-i26irx,
+  .framer-lrmfcq .framer-4in8ie,
+  .framer-lrmfcq [data-framer-name="email"] {
+    order: 1 !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    margin: 0 0 10px 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* Inner Logo Background Image Wrapper Override */
   .framer-lrmfcq .framer-4in8ie [data-framer-background-image-wrapper="true"] {
     position: relative !important;
     top: auto !important;
@@ -1327,36 +1304,68 @@ footer::before,
     display: block !important;
   }
 
-  /* Logo Image - PROMINENT, CENTERED AT TOP OF FOOTER */
   .framer-lrmfcq .framer-4in8ie img,
   .framer-lrmfcq img:not([src*="CjiwHqM"]) {
-    height: 80px !important;
-    max-height: 95px !important;
+    height: 70px !important;
+    max-height: 85px !important;
     width: auto !important;
-    max-width: 320px !important;
+    max-width: 280px !important;
     display: block !important;
-    margin: 0 auto 12px auto !important;
+    margin: 0 auto !important;
     object-fit: contain !important;
-    filter: drop-shadow(0 0 25px rgba(151, 29, 204, 0.8)) drop-shadow(0 4px 15px rgba(0, 0, 0, 0.9)) !important;
+    filter: drop-shadow(0 0 22px rgba(151, 29, 204, 0.8)) drop-shadow(0 4px 15px rgba(0, 0, 0, 0.9)) !important;
   }
 
-  /* Copyright Container (.framer-1znye5) - PLACED AT VERY BOTTOM */
-  .framer-lrmfcq .framer-1znye5 {
-    order: 2 !important; /* PLACED AFTER LOGO AND CONTACT INFO */
+  /* 2. EMAIL LINK (ORDER: 2) */
+  .framer-lrmfcq .framer-xvjj9p,
+  .framer-lrmfcq a[href*="mailto"] {
+    order: 2 !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 3. PHONE LINK (ORDER: 3) */
+  .framer-lrmfcq .framer-1y01llr,
+  .framer-lrmfcq a[href*="tel"] {
+    order: 3 !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 4. COPYRIGHT STATEMENT (ORDER: 4) */
+  .framer-lrmfcq .framer-1znye5,
+  .framer-lrmfcq [data-framer-name="All rights Reserved"] {
+    order: 4 !important;
     position: relative !important;
     top: auto !important;
     left: auto !important;
     width: 100% !important;
     height: auto !important;
-    margin-top: 14px !important;
-    padding-top: 12px !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
-    text-align: center !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-top: 6px !important;
+    padding-top: 14px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
   }
 
   .framer-lrmfcq .framer-1znye5 p {
     font-size: 13px !important;
-    opacity: 0.75 !important;
+    opacity: 0.8 !important;
     margin: 0 !important;
     text-align: center !important;
   }
