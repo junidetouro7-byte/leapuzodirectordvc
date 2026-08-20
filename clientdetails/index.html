@@ -2747,6 +2747,31 @@ div:has(> a[href*="framer.com"]) {
   height: 0 !important;
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   FILE UPLOAD INPUT BOXES - UPLOAD SYMBOL & PADDING
+   ------------------------------------------------------------------------ */
+.file-upload-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  display: block !important;
+}
+
+.file-upload-wrapper input {
+  padding-right: 44px !important;
+  cursor: pointer !important;
+}
+
+.file-upload-symbol {
+  position: absolute !important;
+  right: 14px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  pointer-events: none !important;
+  z-index: 10 !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
@@ -6770,6 +6795,40 @@ div:has(> a[href*="framer.com"]) {
   }
   document.addEventListener('DOMContentLoaded', removeBadges);
   setInterval(removeBadges, 500);
+})();
+</script>
+
+
+<script>
+(function setupUploadSymbols() {
+  const svgIconHTML = `<svg class="file-upload-symbol" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.75)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+    <polyline points="17 8 12 3 7 8"></polyline>
+    <line x1="12" y1="3" x2="12" y2="15"></line>
+  </svg>`;
+
+  function attachUploadSymbols() {
+    const fileKeywords = ['upload', 'logo', 'brand guideline'];
+    const inputs = document.querySelectorAll('#begin input');
+    
+    inputs.forEach(input => {
+      const name = (input.name || '').toLowerCase();
+      const isFileField = fileKeywords.some(kw => name.includes(kw));
+      if (!isFileField) return;
+
+      const wrapper = input.closest('.framer-form-text-input-wrapper, .framer-form-input-wrapper') || input.parentElement;
+      if (!wrapper) return;
+
+      wrapper.classList.add('file-upload-wrapper');
+
+      if (!wrapper.querySelector('.file-upload-symbol')) {
+        wrapper.insertAdjacentHTML('beforeend', svgIconHTML);
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', attachUploadSymbols);
+  setInterval(attachUploadSymbols, 500);
 })();
 </script>
 
