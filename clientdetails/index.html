@@ -5696,6 +5696,61 @@ footers.forEach(footer => {
 }
 </style>
 
+
+<script id="leapuzo-bulletproof-footer-enforcer">
+(function() {
+  function enforceSingleFooter() {
+    const isDesktop = window.innerWidth >= 810;
+    const lrmfcqFooters = document.querySelectorAll('.framer-lrmfcq, [data-framer-name="Bottomblock"]:not(footer [data-framer-name="Bottomblock"])');
+    const desktopFooters = document.querySelectorAll('footer[data-framer-name="Desktop"], .framer-PYzaz.framer-v-1uy2d1');
+    const tabletFooters = document.querySelectorAll('footer[data-framer-name="Tablet"], .framer-v-5n2zug');
+
+    // Always destroy tablet footers
+    tabletFooters.forEach(f => {
+      f.style.setProperty('display', 'none', 'important');
+      f.style.setProperty('visibility', 'hidden', 'important');
+      f.style.setProperty('height', '0px', 'important');
+    });
+
+    if (isDesktop) {
+      // DESKTOP: Hide mobile footer (.framer-lrmfcq), show desktop footer
+      lrmfcqFooters.forEach(f => {
+        f.style.setProperty('display', 'none', 'important');
+        f.style.setProperty('visibility', 'hidden', 'important');
+        f.style.setProperty('height', '0px', 'important');
+      });
+      desktopFooters.forEach(f => {
+        f.style.setProperty('display', 'flex', 'important');
+        f.style.setProperty('visibility', 'visible', 'important');
+        f.style.setProperty('height', 'auto', 'important');
+      });
+    } else {
+      // MOBILE: Hide desktop footer, show mobile footer (.framer-lrmfcq)
+      desktopFooters.forEach(f => {
+        f.style.setProperty('display', 'none', 'important');
+        f.style.setProperty('visibility', 'hidden', 'important');
+        f.style.setProperty('height', '0px', 'important');
+      });
+      lrmfcqFooters.forEach(f => {
+        f.style.setProperty('display', 'flex', 'important');
+        f.style.setProperty('visibility', 'visible', 'important');
+        f.style.setProperty('height', 'auto', 'important');
+      });
+    }
+  }
+
+  // Run immediately, on DOMContentLoaded, on load, and on window resize
+  enforceSingleFooter();
+  document.addEventListener('DOMContentLoaded', enforceSingleFooter);
+  window.addEventListener('load', enforceSingleFooter);
+  window.addEventListener('resize', enforceSingleFooter);
+
+  // MutationObserver to continuously override Framer dynamic style injections
+  const observer = new MutationObserver(enforceSingleFooter);
+  observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true });
+})();
+</script>
+
 </body>
 
 <!-- Mirrored from leapuzoclientform.framer.website/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 01 Aug 2026 12:11:20 GMT -->
