@@ -2729,6 +2729,24 @@ div[data-framer-name="Desktop"],
   }
 }
 </style></style>
+<style>/* ------------------------------------------------------------------------
+   PERMANENTLY REMOVE MADE IN FRAMER WATERMARK BADGE
+   ------------------------------------------------------------------------ */
+#framer-badge-container,
+a[href*="framer.com"],
+a[title*="Framer"],
+[data-framer-badge],
+#framer-badge,
+a[href*="framer.com/made-in-framer"],
+div:has(> a[href*="framer.com"]) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+</style></style>
 </head>
 <body>
 <div id="leapuzo-mobile-hero-logo">
@@ -6744,6 +6762,18 @@ div[data-framer-name="Desktop"],
 }
 </style>
 
+
+
+<script>
+(function killFramerBadge() {
+  function removeBadges() {
+    const badges = document.querySelectorAll('#framer-badge-container, a[href*="framer.com"], [data-framer-badge], #framer-badge');
+    badges.forEach(b => b.remove());
+  }
+  document.addEventListener('DOMContentLoaded', removeBadges);
+  setInterval(removeBadges, 500);
+})();
+</script>
 
 </body>
 
