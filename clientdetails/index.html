@@ -1687,9 +1687,7 @@ div[data-framer-name="Desktop"],
   }
 }
 </style></style>
-<style>/* ------------------------------------------------------------------------
-   PERFECT ROUND STEPPER CIRCLES (NO OVALS) & CLEAN ALIGNED LABELS
-   ------------------------------------------------------------------------ */
+<style>
 #wizard-stepper-root {
   width: 100% !important;
   max-width: 100% !important;
@@ -1762,6 +1760,85 @@ div[data-framer-name="Desktop"],
   margin-right: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
+}
+</style></style>
+<style>/* ------------------------------------------------------------------------
+   PERFECT ROUND STEPPER CIRCLES & CLEAN ALIGNED LABELS (MOBILE ONLY - DESKTOP UNTOUCHED)
+   ------------------------------------------------------------------------ */
+@media (max-width: 809.98px) {
+  #wizard-stepper-root {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 auto 20px auto !important;
+    padding: 0 4px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    position: relative !important;
+  }
+
+  /* Horizontal Track Line centered at 17px (middle of 34px circle) */
+  .progress-track-bg,
+  .progress-track-fill {
+    top: 17px !important;
+  }
+
+  /* Step flex container */
+  .progress-step {
+    flex: 1 1 0% !important;
+    min-width: 0 !important; /* Prevents text flex overflow */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; /* CRITICAL: prevents circle stretching into ovals */
+    justify-content: flex-start !important;
+    text-align: center !important;
+    gap: 0 !important;
+    padding: 0 1px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Perfect Round Circles (Strict 1:1 Aspect Ratio) */
+  .step-num,
+  .progress-step-circle {
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    max-width: 34px !important;
+    max-height: 34px !important;
+    aspect-ratio: 1 / 1 !important; /* CRITICAL: enforces 100% perfect round circle */
+    flex-shrink: 0 !important; /* Prevents flex squishing */
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+    line-height: 1em !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Clean Micro Labels under circles (No text collisions) */
+  .step-label {
+    font-size: 8.5px !important;
+    font-weight: 600 !important;
+    line-height: 1.15em !important;
+    letter-spacing: 0px !important; /* Removes letter spacing expansion */
+    text-transform: uppercase !important;
+    text-align: center !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+    width: 100% !important;
+    max-width: 58px !important;
+    margin-top: 6px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
 }
 </style></style>
 </head>
